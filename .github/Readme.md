@@ -1,4 +1,9 @@
 <p align="center">
+    <b> ᴠɪsɪᴛᴏʀs </b><br>
+ -->    <img align="middle" src="https://profile-counter.glitch.me/Japanese-X-Userbot/count.svg" />
+</p>
+
+<p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?color=F70000&lines=ωσяℓ∂+ℓαяgεsт+αη∂+ғαsтεsт+υsεявσт;ηεvεя+εxιsтε∂+ιη+тнιs+ωσяℓ∂+вεғσяε;+𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄+𝐗+𝐔𝐒𝐄𝐑𝐁𝐎𝐓❤️✨+%E2%9D%A4%EF%B8%8F">
   
   <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
@@ -6,87 +11,120 @@
 
 
 <p align="center">
-  <img src="https://graph.org/file/044661f1a670504a294d4.jpg">
+  <img src="https://graph.org/file/5de731c1f5c71f13f855a.jpg">
 </p>
 
-<p align="center">
-    <b> ᴠɪsɪᴛᴏʀs </b><br>
-     <img align="middle" src="https://profile-counter.glitch.me/Japanese-X-Userbot/count.svg" />
-</p>
+
+
+
+
+
 
 <p align="center">
 <a href="https://github.com/Team-Japanese/Japanese-X-Userbot/stargazers"><img src="https://img.shields.io/github/stars/Team-Japanese/Japanese-X-Userbot?color=black&logo=github&logoColor=black&style=for-the-badge" alt="Stars" /></a>
 <a href="https://github.com/Team-Japanese/Japanese-X-Userbot/network/members"> <img src="https://img.shields.io/github/forks/Team-Japanese/Japanese-X-Userbot?color=black&logo=github&logoColor=black&style=for-the-badge" /></a>
 <a href="https://github.com/Team-Japanese/Japanese-X-Userbot/blob/master/LICENSE"> <img src="https://img.shields.io/badge/License-MIT-blueviolet?style=for-the-badge" alt="License" /> </a>
-<a href="https://github.com/Team-Japanese/Japanese-X-Userbot"> <img src="https://img.shields.io/github/repo-size/Team-Japanese/Japanese-X-Userbot?color=white&logo=github&logoColor=blue&style=for-the-badge" /></a>
+<a href="https://github.com/Team-Japanese/Japanese-X-Chatbot"> <img src="https://img.shields.io/github/repo-size/Team-Japanese/Japanese-X-Userbot?color=white&logo=github&logoColor=blue&style=for-the-badge" /></a>
 <a href="https://github.com/nobitaaaxd/Team-Japanese/Japanese-X-Userbot/commits/aboutnobitaaxd"> <img src="https://img.shields.io/github/last-commit/Team-Japanese/Japanese-X-Userbot?color=black&logo=github&logoColor=black&style=for-the-badge" /></a>
 </p>
 
 
-## ᴄᴏɴꜰɪɢ ᴠᴀʀɪᴀʙʟᴇꜱ
-
-✧ _ᴏᴡɴᴇʀ ɪᴅ_
-
-✧ _ᴏᴡɴᴇʀ ɴᴀᴍᴇ_
-
-✧ _ᴀ ʙᴏᴛ ᴛᴏᴋᴇɴ_
-
-✧ _ᴘʏʀᴏɢʀᴀᴍ ᴠ2 ꜱᴇꜱꜱɪᴏɴ_
-
-✧ _ᴍᴏɴɢᴏ ᴅʙ ᴜʀʟ_
 
 
-## ᴅᴇᴘʟᴏʏᴍᴇɴᴛ
+## 𝑽𝒂𝒓𝒊𝒂𝒃𝒍𝒆𝒔 :
 
-## ʜᴇʀᴏᴋᴜ ᴅᴇᴘʟᴏʏᴍᴇɴᴛ
+✧ 𝑶𝒘𝒏𝒆𝒓 𝑰𝒅
 
-_ꜰᴏʟʟᴏᴡ ᴛʜᴇꜱᴇ ꜱᴛᴇᴘꜱ ᴛᴏ ᴅᴇᴘʟᴏʏ/ʜᴏꜱᴛ ᴏᴜʀ ᴜꜱᴇʀʙᴏᴛ ᴏɴ ʜᴇʀᴏᴋᴜ_
+✧ 𝑶𝒘𝒏𝒆𝒓 𝑵𝒂𝒎𝒆
 
-1. **_ᴍᴜꜱᴛ ꜰᴏʀᴋ ᴛʜᴇ [_ʀᴇᴘᴏ_](https://github.com/Team-Japanese/Japanese-X-Userbot) & ꜱᴛᴀʀ_**
+✧𝑩𝒐𝒕 𝑻𝒐𝒌𝒆𝒏
+
+✧𝑷𝒚𝒓𝒐𝒈𝒓𝒂𝒎 𝐕2 𝑺𝒕𝒓𝒊𝒏𝒈 𝑺𝒆𝒔𝒔𝒊𝒐𝒏
+
+✧𝑴𝒐𝒏𝒈𝒐 𝑫𝒃 𝑼𝒓𝒍
+
+
+
+## 𝑫𝒆𝒑𝒍𝒐𝒚 𝑻𝒐 𝑯𝒆𝒓𝒐𝒌𝒖
+
+𝑭𝒐𝒍𝒍𝒐𝒘 𝒕𝒉𝒆𝒔𝒆 𝒔𝒕𝒆𝒑𝒔 𝒕𝒐 𝒅𝒆𝒑𝒍𝒐𝒚 𝑱𝒂𝒑𝒂𝒏𝒆𝒔𝒆-𝑿-𝑼𝒔𝒆𝒓𝒃𝒐𝒕 𝒐𝒏 𝑯𝒆𝒓𝒐𝒌𝒖:
+
+1. **𝑭𝒐𝒓𝒌 & 𝑺𝒕𝒂𝒓 𝒕𝒉𝒊𝒔 [𝑹𝒆𝒑𝒐](https://github.com/Team-Japanese/Japanese-X-Userbot) :**
     
-2. **_ʟᴏɢɪɴ ʏᴏᴜʀ ʜᴇʀᴏᴋᴜ ᴀᴄᴄᴏᴜɴᴛ ᴏʀ ᴄʀᴇᴀᴛᴇ ᴀ ɴᴇᴡ ᴏɴᴇ_**
+2. **𝑯𝒆𝒓𝒐𝒌𝒖 𝑨𝒄𝒄𝒐𝒖𝒏𝒕 𝑳𝒐𝒈𝒊𝒏 :**
   
-3. **_ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ᴅᴇᴘʟᴏʏ ᴏɴ ʜᴇʀᴋᴏ [ᴄʟɪᴄᴋ ʜᴇʀᴇ](https://dashboard.heroku.com/new?template=https%3A%2F%2Fgithub.com%2FTeam-Japanese%2FJapanese-X-Userbot)_**
+
+3. **𝑪𝒍𝒊𝒄𝒌 𝑫𝒆𝒑𝒍𝒐𝒚 𝒕𝒐 𝑯𝒆𝒓𝒐𝒌𝒖 :**
    
-4. **_ꜰɪʟʟ ɪɴ ᴛʜᴇ ʀᴇQᴜɪʀᴇᴅ ᴠᴀʀɪᴀʙʟᴇꜱ, ᴀɴᴅ ɪꜰ ʏᴏᴜ ᴡᴀɴᴛ ᴍᴏʀᴇ ᴄᴜꜱᴛᴏᴍɪᴢᴀʙʟᴇ ꜰᴇᴀᴛᴜʀᴇꜱ, ꜰɪʟʟ ɪɴ ᴛʜᴇ ᴏᴘᴛɪᴏɴᴀʟ ᴠᴀʀɪᴀʙʟᴇꜱ ᴀꜱ ᴡᴇʟʟ_**
+
+4. **𝑭𝒊𝒍𝒍 𝑹𝒆𝒒𝒖𝒊𝒓𝒆𝒅 𝑽𝒂𝒓𝒊𝒂𝒃𝒍𝒆𝒔 :**
   
 
-<p align="center"><a href="https://dashboard.heroku.com/new?template=https%3A%2F%2Fgithub.com%2FTeam-Japanese%2FJapanese-X-Userbot"> <img src="https://img.shields.io/badge/Deploy%20On%20Heroku-purple?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
+<p align="center"><a href="http://dashboard.heroku.com/new?template=https://github.com/Team-Japanese/Japanese-X-Userbot"> <img src="https://img.shields.io/badge/Deploy%20On%20Heroku-purple?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
+
+
+# 𝑫𝑰𝑺𝑪𝑳𝑨𝑰𝑴𝑬𝑹
+
+
+```console
+                      ❗️YOU ARE FOREWARNED❗️
+
+                       ⚠️ ᴡᴀʀɴɪɴɢ ꜰᴏʀ ʏᴏᴜ ⚠️
+
+! We won't be responsible for any kind of ban due to this bot.
+! Bot Spam was made for fun purpose and to make group management easier.
+! It's your concern if you spam and gets your account banned.
+! Also, Forks won't be entertained.
+! If you fork this repo and edit plugins, it's your concern for further updates.
+! Forking Repo is fine. But if you edit something we will not provide any help.
+! In short, Fork At Your Own Risk    
+
+               💖 Thanks for using our bot 💖
+
+```
+
+## 𝑺𝒖𝒑𝒑𝒐𝒓𝒕 𝑮𝒓𝒐𝒖𝒑 / 𝑪𝒉𝒂𝒏𝒏𝒆𝒍
+
+<p align="center"><a href="https://t.me/Japanese_Userbot_Support"><img src="https://img.shields.io/badge/𝚃𝙴𝙻𝙴𝙶𝚁𝙰𝙼-𝚂𝚄𝙿𝙿𝙾𝚁𝚃-black?&style=for-the-badge&logo=telegram" width="220" height="38.45"></a></p>
+
+<p align="center"><a href="https://t.me/Japanese_Userbot"><img src="https://img.shields.io/badge/𝚃𝙴𝙻𝙴𝙶𝚁𝙰𝙼-𝚄𝙿𝙳𝙰𝚃𝙴𝚂-black?&style=for-the-badge&logo=telegram" width="220" height="38.45"></a></p>
 
 
 
-## ᴛᴇʟᴇɢʀᴀᴍ
-
-[![ᴄʜᴀᴛ ᴏɴ ᴛᴇʟᴇɢʀᴀᴍ](https://img.shields.io/badge/Chat%20on-Telegram-blue.svg)](https://t.me/Nobitaa_xd)
-
-[![Telegram](https://img.shields.io/badge/Telegram-groups-blue?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNCAyNCIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtOS40MTcgMTUuMTgxLS4zOTcgNS41ODRjLjU2OCAwIC44MTQtLjI0NCAxLjEwOS0uNTM3bDIuNjYzLTIuNTQ1IDUuNTE4IDQuMDQxYzEuMDEyLjU2NCAxLjcyNS4yNjcgMS45OTgtLjkzMWwzLjYyMi0xNi45NzIuMDAxLS4wMDFjLjMyMS0xLjQ5Ni0uNTQxLTIuMDgxLTEuNTI3LTEuNzE0bC0yMS4yOSA4LjE1MWMtMS40NTMuNTY0LTEuNDMxIDEuMzc0LS4yNDcgMS43NDFsNS40NDMgMS42OTMgMTIuNjQzLTcuOTExYy41OTUtLjM5NCAxLjEzNi0uMTc2LjY5MS4yMTh6IiBmaWxsPSIjMDM5YmU1Ii8+PC9zdmc+)](https://t.me/Japanese_Userbot_Support)
-
-[![Telegram](https://img.shields.io/badge/Telegram-channels-blue?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNCAyNCIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtOS40MTcgMTUuMTgxLS4zOTcgNS41ODRjLjU2OCAwIC44MTQtLjI0NCAxLjEwOS0uNTM3bDIuNjYzLTIuNTQ1IDUuNTE4IDQuMDQxYzEuMDEyLjU2NCAxLjcyNS4yNjcgMS45OTgtLjkzMWwzLjYyMi0xNi45NzIuMDAxLS4wMDFjLjMyMS0xLjQ5Ni0uNTQxLTIuMDgxLTEuNTI3LTEuNzE0bC0yMS4yOSA4LjE1MWMtMS40NTMuNTY0LTEuNDMxIDEuMzc0LS4yNDcgMS43NDFsNS40NDMgMS42OTMgMTIuNjQzLTcuOTExYy41OTUtLjM5NCAxLjEzNi0uMTc2LjY5MS4yMTh6IiBmaWxsPSIjMDM5YmU1Ii8+PC9zdmc+)](https://t.me/Japanese_Userbot)
 
 
-## ᴅɪꜱᴄʟᴀɪᴍᴇʀ
+#### 𝑺𝒑𝒆𝒄𝒊𝒂𝒍 𝑻𝒉𝒂𝒏𝒌𝒔 𝑻𝒐 [𝑬𝒗𝒆𝒓𝒚𝒐𝒏𝒆](https://github.com/Team-Japanese/Japanese-X-Userbot/graphs/contributors) 𝑾𝒉𝒐 𝑯𝒂𝒔 𝑯𝒆𝒍𝒑𝒆𝒅 𝑴𝒂𝒌𝒆 𝑻𝒉𝒊𝒔 𝑼𝒔𝒆𝒓𝒃𝒐𝒕 𝑨𝒘𝒆𝒔𝒐𝒎𝒆!
+-  [PyroMan-Userbot](https://github.com/mrismanaziz/PyroMan-Userbot) : PyroMan-Userbot
+-  [Athphane Userbot](https://github.com/athphane/userbot) : Athphane Userbot
+-  [TeamDerUntergang](https://github.com/TeamDerUntergang/Telegram-SedenUserBot) : SedenUserBot
+-  [TheHamkerCat](https://github.com/TheHamkerCat/WilliamButcherBot) : WilliamButcherBot
+-  [Dareen Userbot](https://github.com/mikeel-ye/Dareen-Userbot) : Dareen Userbot
+-  [Storm Userbot](https://github.com/VARC9210/STORM-USERBOT) : Storm Userbot 
+-  [Ayra X Userbot](https://github.com/OTANCABUL/Ayra) : Ayra X Userbot
+-  [Ayiin Userbot](https://github.com/AyiinXd/Ayiin-Userbot) : Ayiin Userbot
+-  [King Userbot](https://github.com/apisuserbot/King-Userbot) : King Userbot
+-  [TeamYukki](https://github.com/TeamYukki/YukkiMusicBot) : YukkiMusicBot
+-  [ITZ-ZAID](https://github.com/ITZ-ZAID/ZAID-USERBOT) : Zaid-UserBot
+-  [Risman](https://github.com/mrismanaziz) : PyroMan-Userbot
+-  [OnlyMeriz](https://github.com/Onlymeriz) : OnlyMeriz
+-  [Toni](https://github.com/Toni880) : Prime-UserBot
+-  [Guru-Bot](https://github.com/Guru322/GURU-BOT) : Guru Bot
+-  [Geez Ram](https://github.com/hitokizzy/Geez-Pyro) : Geez Ram
+-  [Tofikdn](https://github.com/tofikdn) : Tede
+-  [Ultroid](https://github.com/TeamUltroid/Ultroid) : Ultroid 
+-  [Ultra X](https://github.com/ULTRA-OP/ULTRA-X) : Ultra-X
+-  [Kazu](https://github.com/ionmusic) : Kazu 
 
-- ᴏᴜʀ ᴛᴇᴀᴍ ᴅɪꜱᴄʟᴀɪᴍꜱ ʀᴇꜱᴘᴏɴꜱɪʙɪʟɪᴛʏ ꜰᴏʀ ᴀɴʏ ᴄᴏɴꜱᴇQᴜᴇɴᴄᴇꜱ ᴛᴏ ʏᴏᴜʀ ᴛᴇʟᴇɢʀᴀᴍ ᴀᴄᴄᴏᴜɴᴛ.
-ɪꜰ ɪꜱꜱᴜᴇꜱ ᴀʀɪꜱᴇ ᴅᴜᴇ ᴛᴏ ᴍɪꜱᴜꜱᴇ ᴏʀ ᴄᴏɴꜰʟɪᴄᴛꜱ, ᴀᴄᴄᴏᴜɴᴛᴀʙɪʟɪᴛʏ ʀᴇꜱᴛꜱ ᴡɪᴛʜ ᴛʜᴇ ᴜꜱᴇʀ.
-ᴛʜᴇ ʙᴏᴛ ꜱᴇʀᴠᴇꜱ ꜰᴏʀ ʀᴇᴄʀᴇᴀᴛɪᴏɴᴀʟ ᴘᴜʀᴘᴏꜱᴇꜱ ᴀɴᴅ ᴀɪᴍꜱ ᴛᴏ ꜱᴛʀᴇᴀᴍʟɪɴᴇ ɢʀᴏᴜᴘ/ᴘʀᴏꜰɪʟᴇ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ.
-ᴜꜱᴇʀ-ᴄᴀᴜꜱᴇᴅ ᴀᴄᴄᴏᴜɴᴛ ɪꜱꜱᴜᴇꜱ ᴀʀᴇ ʙᴇʏᴏɴᴅ ᴏᴜʀ ᴘᴜʀᴠɪᴇᴡ.
+### 𝑪𝒓𝒆𝒅𝒊𝒕
 
-- ᴡʜɪʟᴇ ꜰᴏʀᴋɪɴɢ ᴛʜᴇ ʀᴇᴘᴏꜱɪᴛᴏʀʏ ɪꜱ ᴘᴇʀᴍɪᴛᴛᴇᴅ, ᴡᴇ ᴡᴏɴ'ᴛ ꜱᴜᴘᴘᴏʀᴛ ᴇᴅɪᴛᴇᴅ ᴘʟᴜɢɪɴꜱ ᴏʀ ᴍᴏᴅɪꜰɪᴄᴀᴛɪᴏɴꜱ.
-ʀᴇꜱᴘᴏɴꜱɪʙɪʟɪᴛʏ ꜰᴏʀ ꜰᴜʀᴛʜᴇʀ ᴜᴘᴅᴀᴛᴇꜱ ʟɪᴇꜱ ᴡɪᴛʜ ɪɴᴅɪᴠɪᴅᴜᴀʟ ꜰᴏʀᴋᴇʀꜱ.
+<h3 align="center">
+    ─「 𝑪𝒓𝒆𝒅𝒊𝒕 」─
+</h3>
 
-- ᴛʜɪꜱ ꜱᴇʀᴠɪᴄᴇ ᴅᴏᴇꜱ ɴᴏᴛ ᴘʀᴏᴠɪᴅᴇ ɪɴᴅɪᴠɪᴅᴜᴀʟɪᴢᴇᴅ ꜱᴜᴘᴘᴏʀᴛ.
-ꜱʜᴏᴜʟᴅ ʏᴏᴜ ʀᴇQᴜɪʀᴇ ᴀꜱꜱɪꜱᴛᴀɴᴄᴇ, ᴋɪɴᴅʟʏ ᴇɴɢᴀɢᴇ ᴡɪᴛʜ ᴏᴜʀ ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ ꜰᴏʀ ᴄᴏᴍᴍᴜɴɪᴛʏ-ʙᴀꜱᴇᴅ ɢᴜɪᴅᴀɴᴄᴇ.
+✧ <b>[𝐍𝐎𝐁𝐈𝐓𝐀_𝐗𝐃](https://github.com/nobitaaaxd) 
 
-» ᴛʜᴀɴᴋ ʏᴏᴜ ꜰᴏʀ ᴄʜᴏᴏꜱɪɴɢ ᴏᴜʀ ʙᴏᴛ. ᴡᴇ ɢʀᴇᴀᴛʟʏ ᴀᴘᴘʀᴇᴄɪᴀᴛᴇ ʏᴏᴜʀ ᴜɴᴅᴇʀꜱᴛᴀɴᴅɪɴɢ ᴀɴᴅ ᴄᴏɴᴛɪɴᴜᴇᴅ ꜱᴜᴘᴘᴏʀᴛ. 
+✧ <b>[𝐌𝐈𝐑𝐙𝐀](https://github.com/MirzaOp) 
 
-## ʟɪᴄᴇɴᴄᴇ 
+✧ <b>[𝗧𝗿𝘆𝗧𝗼𝗟𝗶𝘃𝗲𝗔𝗹𝗼𝗻𝗲](https://t.me/TryToLiveAlon)
 
-<a href="https://github.com/Team-Japanese/Japanese-X-Userbot/blob/master/LICENSE"> <img src="https://img.shields.io/badge/License-MIT-white?style=for-the-badge" alt="License" /> </a>
-
-
-
-## ᴄʀᴇᴅɪᴛs
-
-<a href="https://github.com/Team-Japanese/Japanese-X-Userbot/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Team-Japanese/Japanese-X-Userbot" />
-</a
+✧ <b>[𝐊𝐮𝐧𝐚𝐥](https://github.com/VARC9210)
