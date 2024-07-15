@@ -41,6 +41,3 @@ youtube-search-python
 yt-dlp==2024.7.7
 httpx[http2]
 openai
-flask
-flask_restful
-reportlab
