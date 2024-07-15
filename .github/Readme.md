@@ -53,33 +53,7 @@ _ꜰᴏʟʟᴏᴡ ᴛʜᴇꜱᴇ ꜱᴛᴇᴘꜱ ᴛᴏ ᴅᴇᴘʟᴏʏ/ʜᴏ�
 
 <p align="center"><a href="https://dashboard.heroku.com/new?template=https%3A%2F%2Fgithub.com%2FTeam-Japanese%2FJapanese-X-Userbot"> <img src="https://img.shields.io/badge/Deploy%20On%20Heroku-purple?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
 
-## Dᴇᴘʟᴏʏ Tᴏ Lᴏᴄᴀʟ Hᴏsᴛ/Vᴘs/Tᴇʀᴍᴜx/Tᴇʀᴍɪɴᴀʟ
 
-1.`apt update && apt upgrade`
-
-  `apt install python3 -y`
-
-  `pkg install git`
-
-   `git clone https://github.com/Team-Japanese/Plugins`
-
-2. `git clone https://github.com/Team-Japanese/Japanese-X-Userbot && cd Japanese-X-Userbot`
-
-3. `cp sample.env .env && vi .env`
-
-4. Press `i`
-
-5. [Fill Variables](https://github.com/Team-Japanese/Japanese-X-Userbot/blob/main/sample.env)
-
-6. To save the file press `Esc` button and write `:wq` using your keyboard and press `Enter`
-
-7. `python3 -m virtualenv venv && source venv/bin/activate`
-
-8. `pip3 install -U -r requirements.txt`
-
-9. `tmux new-session -s japanesebot`
-
-10. `bash setup`
 
 ## ᴛᴇʟᴇɢʀᴀᴍ
 
