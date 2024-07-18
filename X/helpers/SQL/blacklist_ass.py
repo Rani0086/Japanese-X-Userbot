@@ -1,7 +1,6 @@
 from sqlalchemy import Column, String
 
-from X.helper.SQL import BASE, SESSION
-
+from X.helpers.SQL import BASE, SESSION
 
 class Blockedid(BASE):
     __tablename__ = "blockedid"
