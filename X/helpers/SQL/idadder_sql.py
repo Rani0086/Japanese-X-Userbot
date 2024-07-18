@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String
 
-from X.helper.SQL import BASE, SESSION
+from X.helpers.SQL import BASE, SESSION
 
 class Moidata(BASE):
     __tablename__ = "moidata"
