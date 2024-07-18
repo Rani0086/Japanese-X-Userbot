@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Numeric, String
 
-from X.helper.SQL import BASE, SESSION
+from X.helpers.SQL import BASE, SESSION
 
 
 class forceSubscribe(BASE):
