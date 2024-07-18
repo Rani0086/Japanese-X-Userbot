@@ -1,5 +1,5 @@
 from sqlalchemy import Boolean, Column, String
-from X.helper.SQL import BASE, SESSION
+from X.helpers.SQL import BASE, SESSION
 
 class Locks(BASE):
     __tablename__ = "locks"
