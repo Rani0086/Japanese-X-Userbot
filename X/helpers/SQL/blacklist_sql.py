@@ -2,8 +2,7 @@ import threading
 
 from sqlalchemy import func, distinct, Column, String, UnicodeText
 
-from X.helper.SQL import BASE, SESSION
-
+from X.helpers.SQL import BASE, SESSION
 
 class BlackListFilters(BASE):
     __tablename__ = "blacklist"
