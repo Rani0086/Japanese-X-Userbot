@@ -5,6 +5,9 @@ asyncio
 bs4
 dnspython
 emoji
+flask
+flask_restful
+gunicorn
 gitpython
 google-search==1.1.1
 google==3.0.0
