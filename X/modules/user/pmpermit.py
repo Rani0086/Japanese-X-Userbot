@@ -351,7 +351,7 @@ async def gtpmprmt(client: Client, cust_msg: Message):
 
 
 add_command_help(
-    "pmpermit",
+    "•─╼⃝𖠁 Pᴍᴘᴇʀᴍɪᴛ",
     [
         [
             f"ok or {cmd}setuju",
