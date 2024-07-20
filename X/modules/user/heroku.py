@@ -310,9 +310,9 @@ async def usage_dynos(client, message):
 ✥ **Information Dyno Heroku :**
 ╔════════════════════╗
  ➠ **Usage Dyno** `{HEROKU_APP_NAME}` :
-     •  `{AppHours}`**Jam**  `{AppMinutes}`**Minute |**  [`{AppPercentage}`**%**]
+     •  `{AppHours}`**Hours**  `{AppMinutes}`**Minute |**  [`{AppPercentage}`**%**]
  ➠ **Remaining dyno quota for this month** :
-     •  `{hours}`**Jam**  `{minutes}`**Minute |**  [`{percentage}`**%**]
+     •  `{hours}`**Hours**  `{minutes}`**Minute |**  [`{percentage}`**%**]
 ╚════════════════════╝
 ✥ **Left over Dyno Heroku** `{day}` **Another Day**"""
     return await dyno.edit(text)
