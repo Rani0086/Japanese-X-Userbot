@@ -30,7 +30,7 @@
 #
 #
 # kopas repo dan hapus credit, ga akan jadikan lu seorang developer
-# ©2023 Geez | Ram Team
+# ©2023 Geez | Ram Team & © Ultra X Legendx22
 
 
 #REMAKE BY NOBITA XD AND TRYTOLIVEALONE 
