@@ -62,24 +62,4 @@ STRING_SESSION7 = getenv("STRING_SESSION7", "")
 STRING_SESSION8 = getenv("STRING_SESSION8", "")
 STRING_SESSION9 = getenv("STRING_SESSION9", "")
 STRING_SESSION10 = getenv("STRING_SESSION10", "")
-SUDOS = os.getenv("SUDO_USERS", None)
-SUDO_USERS = []
-
-if SUDOS:
-    sudos = str(SUDOS).split(" ")
-    for sudo_id in sudos:
-        try:
-            SUDO_USERS.append(int(sudo_id))
-        except ValueError:
-            print(f"Warning: Invalid user ID '{sudo_id}' in SUDO_USERS environment variable.")
-            continue
-            
-OWNER_ID = os.getenv("OWNER_ID", "")
-
-SUDO_USERS.append(OWNER_ID)
-SUDO_USERS.extend(MASTERS)
-
-BLACKLIST_CHAT = getenv("BLACKLIST_CHAT", None)
-if not BLACKLIST_CHAT:
-    BLACKLIST_CHAT = [-1001608701614, -1001675459127, -1001473548283, -1001608701614]
-BLACKLIST_GCAST = {int(x) for x in getenv("BLACKLIST_GCAST", "").split()}
+SUDO_USERS = list(map(int, getenv("SUDO_USERS", "").split()))
