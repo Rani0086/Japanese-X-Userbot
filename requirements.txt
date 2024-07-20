@@ -4,7 +4,6 @@ aiohttp
 asyncio
 bs4
 dnspython
-emoji
 flask
 flask_restful
 gunicorn
