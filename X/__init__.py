@@ -107,6 +107,10 @@ if not BOT_TOKEN:
    sys.exit
 
 
+if BOTLOG_CHATID:
+   BOTLOG_CHATID = BOTLOG_CHATID
+else:
+   BOTLOG_CHATID = "me"
 
 LOOP = asyncio.get_event_loop()
 
