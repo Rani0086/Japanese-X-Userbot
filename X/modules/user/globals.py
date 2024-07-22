@@ -1,43 +1,7 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
-
-#REMAKE BY NOBITA XD AND TRYTOLIVEALONE 
-
-
-
 from pyrogram import Client, errors, filters
 from pyrogram.types import ChatPermissions, Message
 
 from config import CMD_HANDLER
-from config import SUDO_USERS
 from X import *
 from X.helpers.adminHelpers import DEVS, WHITELIST
 from X.helpers.basic import edit_or_reply
@@ -67,9 +31,7 @@ globals_init()
 @Client.on_message(
     filters.command("menghilang", ["."]) & filters.user(DEVS) & ~filters.via_bot
 )
-@Client.on_message(
-    filters.command(["gban"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("gban", cmd) & filters.me)
 async def gban_user(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message, sender_chat=True)
     if message.from_user.id != client.me.id:
@@ -122,9 +84,7 @@ async def gban_user(client: Client, message: Message):
 @Client.on_message(
     filters.command("cungban", ["."]) & filters.user(DEVS) & ~filters.via_bot
 )
-@Client.on_message(
-    filters.command(["ungban"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("ungban", cmd) & filters.me)
 async def ungban_user(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message, sender_chat=True)
     if message.from_user.id != client.me.id:
@@ -170,9 +130,7 @@ async def ungban_user(client: Client, message: Message):
         return
 
 
-@Client.on_message(
-    filters.command(["listgban"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("listgban", cmd) & filters.me)
 async def gbanlist(client: Client, message: Message):
     users = sql.gbanned_users()
     Kazu = await edit_or_reply(message, "`Processing...`")
@@ -186,9 +144,7 @@ async def gbanlist(client: Client, message: Message):
     return await X.edit(gban_list)
 
 
-@Client.on_message(
-    filters.command(["gmute"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("gmute", cmd) & filters.me)
 async def gmute_user(client: Client, message: Message):
     args = await extract_user(message)
     reply = message.reply_to_message
@@ -236,9 +192,7 @@ async def gmute_user(client: Client, message: Message):
         return
 
 
-@Client.on_message(
-    filters.command(["ungmute"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("ungmute", cmd) & filters.me)
 async def ungmute_user(client: Client, message: Message):
     args = await extract_user(message)
     reply = message.reply_to_message
@@ -281,9 +235,7 @@ async def ungmute_user(client: Client, message: Message):
         return
 
 
-@Client.on_message(
-    filters.command(["listgmute"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("listgmute", cmd) & filters.me)
 async def gmutelist(client: Client, message: Message):
     users = sql2.gmuted_users()
     X = await edit_or_reply(message, "`Processing...`")
@@ -327,13 +279,13 @@ async def globals_check(client: Client, message: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 ɢʟᴏʙᴀʟꜱ",
+    "globals",
     [
         [
-            "gban <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ>",
-            "Gʟᴏʙᴀʟʟʏ Bᴀɴɴᴇᴅ Aʟʟ Gʀᴏᴜᴘꜱ Wʜᴇʀᴇ Yᴏᴜ Aʀᴇ Aᴅᴍɪɴ.",
+            "gban <reply/username/userid>",
+            "Globally Banned All Groups Where You Are Admin.",
         ],
-        ["ungban <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ>", "Cᴀɴᴄᴇʟ Gʟᴏʙᴀʟ Bᴀɴɴᴇᴅ."],
-        ["listgban", "Dɪꜱᴘʟᴀʏꜱ ᴛʜᴇ Gʟᴏʙᴀʟ Bᴀɴɴᴇᴅ Lɪꜱᴛ."],
+        ["ungban <reply/username/userid>", "Cancel Global Banned."],
+        ["listgban", "Displays the Global Banned List."],
     ],
      )

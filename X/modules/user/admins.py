@@ -1,44 +1,8 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
-
-
-#REMAKE BY : NOBITA XD AND TRYTOLIVEALONE
-
 import asyncio
 
 from pyrogram import Client, filters
 from pyrogram.errors import ChatAdminRequired
 from pyrogram.types import ChatPermissions, ChatPrivileges, Message
-
-from config import SUDO_USERS
 
 from config import CMD_HANDLER
 from X.helpers.adminHelpers import DEVS
@@ -56,9 +20,8 @@ unmute_permissions = ChatPermissions(
 )
 
 
-
 @Client.on_message(
-    filters.command(["setchatphoto", "setgpic"], ".") & (filters.me | filters.user(SUDO_USERS))
+    filters.group & filters.command(["setchatphoto", "setgpic"], cmd) & filters.me
 )
 async def set_chat_photo(client: Client, message: Message):
     X = (await client.get_chat_member(message.chat.id, client.me.id)).privileges
@@ -77,8 +40,9 @@ async def set_chat_photo(client: Client, message: Message):
 
 
 @Client.on_message(
-    filters.command(["ban", "cban"], ".") & (filters.me | filters.user(SUDO_USERS))
+    filters.group & filters.command("cban", ["."]) & filters.user(DEVS) & ~filters.me
 )
+@Client.on_message(filters.group & filters.command("ban", cmd) & filters.me)
 async def member_ban(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message, sender_chat=True)
     Man = await edit_or_reply(message, "`Currently Process...`")
@@ -113,9 +77,8 @@ async def member_ban(client: Client, message: Message):
     await Man.edit(msg)
 
 
-@Client.on_message(
-    filters.command(["unban", "cunban"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("cunban", ["."]) & filters.user(DEVS) & ~filters.me)
+@Client.on_message(filters.group & filters.command("unban", cmd) & filters.me)
 async def member_unban(client: Client, message: Message):
     reply = message.reply_to_message
     Man = await edit_or_reply(message, "`In progresss...`")
@@ -137,9 +100,11 @@ async def member_unban(client: Client, message: Message):
     umention = (await client.get_users(user)).mention
     await Man.edit(f"Unbanned! {umention}")
 
+
 @Client.on_message(
-    filters.command(["pin", "unpin", "cpin", "cunpin"], ".") & (filters.me | filters.user(SUDO_USERS))
+    filters.command(["cpin", "cunpin"], ["."]) & filters.user(DEVS) & ~filters.me
 )
+@Client.on_message(filters.command(["pin", "unpin"], cmd) & filters.me)
 async def pin_message(client: Client, message):
     if not message.reply_to_message:
         return await edit_or_reply(message, "Reply to a message to pin/unpin it.")
@@ -160,9 +125,9 @@ async def pin_message(client: Client, message):
         disable_web_page_preview=True,
     )
 
-@Client.on_message(
-    filters.command(["mute", "cmute"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+
+@Client.on_message(filters.command(["cmute"], ["."]) & filters.user(DEVS) & ~filters.me)
+@Client.on_message(filters.command("mute", cmd) & filters.me)
 async def mute(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message)
     Man = await edit_or_reply(message, "`Processing...`")
@@ -187,9 +152,9 @@ async def mute(client: Client, message: Message):
     await message.chat.restrict_member(user_id, permissions=ChatPermissions())
     await Man.edit(msg)
 
-@Client.on_message(
-    filters.command(["cunmute", "unmute"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+
+@Client.on_message(filters.command(["cunmute"], ["."]) & filters.user(DEVS) & ~filters.me)
+@Client.on_message(filters.group & filters.command("unmute", cmd) & filters.me)
 async def unmute(client: Client, message: Message):
     user_id = await extract_user(message)
     Man = await edit_or_reply(message, "`Processing...`")
@@ -202,9 +167,8 @@ async def unmute(client: Client, message: Message):
     umention = (await client.get_users(user_id)).mention
     await Man.edit(f"Unmuted! {umention}")
 
-@Client.on_message(
-    filters.command(["kick", "dkick", "ckick", "cdkick"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["ckick", "cdkick"], ["."]) & filters.user(DEVS) & ~filters.me)
+@Client.on_message(filters.command(["kick", "dkick"], cmd) & filters.me)
 async def kick_user(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message)
     X = await edit_or_reply(message, "`Processing...`")
@@ -235,8 +199,15 @@ async def kick_user(client: Client, message: Message):
     except ChatAdminRequired:
         return await X.edit("**Sorry You are not an admin**")
 
+
 @Client.on_message(
-    filters.command(["promote", "fullpromote", "cpromote", "cfullpromote"], ".") & (filters.me | filters.user(SUDO_USERS))
+    filters.group
+    & filters.command(["cpromote", "cfullpromote"], ["."])
+    & filters.user(DEVS)
+    & ~filters.me
+)
+@Client.on_message(
+    filters.group & filters.command(["promote", "fullpromote"], cmd) & filters.me
 )
 async def promotte(client: Client, message: Message):
     user_id = await extract_user(message)
@@ -280,8 +251,12 @@ async def promotte(client: Client, message: Message):
 
 
 @Client.on_message(
-    filters.command(["demote", "cdemote"], ".") & (filters.me | filters.user(SUDO_USERS))
+    filters.group
+    & filters.command(["cdemote"], ["."])
+    & filters.user(DEVS)
+    & ~filters.me
 )
+@Client.on_message(filters.group & filters.command("demote", cmd) & filters.me)
 async def demote(client: Client, message: Message):
     user_id = await extract_user(message)
     X = await edit_or_reply(message, "`Processing...`")
@@ -307,38 +282,38 @@ async def demote(client: Client, message: Message):
 
 
 add_command_help(
-    "─╼⃝𖠁ᴀᴅᴍɪɴ",
+    "admin",
     [
-        [f"{cmd}ban <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ> <ʀᴇᴀꜱᴏɴ>", "Bᴀɴɴᴇᴅ ᴍᴇᴍʙᴇʀꜱ ғʀᴏᴍ ᴛʜᴇ ɢʀᴏᴜᴘ."],
+        [f"{cmd}ban <reply/username/userid> <reason>", "Banned members from the group."],
         [
-            f"{cmd}unban <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ> <ᴀʟᴀꜱᴀɴ>",
-            "Uɴʙᴀɴɴᴇᴅ ᴍᴇᴍʙᴇʀꜱ ᴏғ ᴛʜᴇ ɢʀᴏᴜᴘ.",
+            f"{cmd}unban <reply/username/userid> <alasan>",
+            "Unbanned members of the group.",
         ],
-        [f"{cmd}kick <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ>", "Rᴇᴍᴏᴠᴇ ᴀ ᴜꜱᴇʀ ғʀᴏᴍ ᴀ ɢʀᴏᴜᴘ."],
+        [f"{cmd}kick <reply/username/userid>", "Remove a user from a group."],
         [
             f"{cmd}promote or {cmd}fullpromote",
-            "Pʀᴏᴍᴏᴛᴇ ᴍᴇᴍʙᴇʀꜱ ᴀꜱ ᴀᴅᴍɪɴ ᴏʀ ᴄᴏғᴏᴜɴᴅᴇʀ.",
+            "Promote members as admin or cofounder.",
         ],
-        [f"{cmd}demote", "Rᴇᴅᴜᴄɪɴɢ ᴀᴅᴍɪɴ ᴀꜱ ᴀ ᴍᴇᴍʙᴇʀ."],
+        [f"{cmd}demote", "Reducing admin as a member."],
         [
-            f"{cmd}mute <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ>",
-            "Mᴜᴛᴇ ᴀ ᴍᴇᴍʙᴇʀ ғʀᴏᴍ ᴀ Gʀᴏᴜᴘ.",
-        ],
-        [
-            f"{cmd}unmute <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ>",
-            "Uɴᴍᴜᴛᴇ ᴍᴇᴍʙᴇʀꜱ ᴏғ ᴛʜᴇ Gʀᴏᴜᴘ.",
+            f"{cmd}mute <reply/username/userid>",
+            "Mute a member from a Group.",
         ],
         [
-            f"{cmd}pin <ʀᴇᴘʟʏ>",
-            "Tᴏ ᴘɪɴ ᴀ ᴍᴇꜱꜱᴀɢᴇ ɪɴ ᴀ ɢʀᴏᴜᴘ.",
+            f"{cmd}unmute <reply/username/userid>",
+            "Unmute members of the Group.",
         ],
         [
-            f"{cmd}unpin <ʀᴇᴘʟʏ>",
-            "Tᴏ ᴜɴᴘɪɴ ᴀ ᴍᴇꜱꜱᴀɢᴇ ɪɴ ᴀ ɢʀᴏᴜᴘ.",
+            f"{cmd}pin <reply>",
+            "To pin a message in a group.",
         ],
         [
-            f"{cmd}setgpic <ʀᴇᴘʟʏ ᴛᴏ ᴛʜᴇ ᴘʜᴏᴛᴏ>",
-            "Tᴏ ᴄʜᴀɴɢᴇ ᴛʜᴇ ɢʀᴏᴜᴘ ᴘʀᴏғɪʟᴇ ᴘʜᴏᴛᴏ",
+            f"{cmd}unpin <reply>",
+            "To unpin a message in a group.",
+        ],
+        [
+            f"{cmd}setgpic <reply to the photo>",
+            "To change the group profile photo",
         ],
     ],
 ) 

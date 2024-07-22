@@ -1,38 +1,3 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
-
-
-#REMAKE BY : NOBITA XD AND TRYTOLIVEALONE
-
-
 import asyncio
 import random
 
@@ -44,7 +9,6 @@ from pyrogram.types import *
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
-from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply, get_text
 from X.helpers.constants import MEMES
 
@@ -136,9 +100,7 @@ async def phase4(message):
         await asyncio.sleep(SLEEP)
 
 
-@Client.on_message(
-    filters.command(["heart", "love"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["heart", "love"], cmd) & filters.me)
 async def hearts(client: Client, message: Message):
     await phase1(message)
     await asyncio.sleep(SLEEP * 3)
@@ -159,9 +121,50 @@ async def _(client: Client, message: Message):
     reply_text = NOBLE[noble]
     await edit_or_reply(message, reply_text)
 
-@Client.on_message(
-    filters.command(["hmm"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+
+@Client.on_message(filters.command("wink", cmd) & filters.me)
+async def wink(client: Client, message: Message):
+    hmm_s = "https://some-random-api.ml/animu/wink"
+    r = requests.get(url=hmm_s).json()
+    image_s = r["link"]
+    await client.send_video(message.chat.id, image_s)
+    await message.delete()
+
+
+@Client.on_message(filters.command("hug", cmd) & filters.me)
+async def hug(client: Client, message: Message):
+    hmm_s = "https://some-random-api.ml/animu/hug"
+    r = requests.get(url=hmm_s).json()
+    image_s = r["link"]
+    await client.send_video(message.chat.id, image_s)
+    await message.delete()
+
+
+@Client.on_message(filters.command("pat", cmd) & filters.me)
+async def pat(client: Client, message: Message):
+    hmm_s = "https://some-random-api.ml/animu/pat"
+    r = requests.get(url=hmm_s).json()
+    image_s = r["link"]
+    await client.send_video(message.chat.id, image_s)
+    await message.delete()
+
+
+@Client.on_message(filters.command("pikachu", cmd) & filters.me)
+async def pikachu(client: Client, message: Message):
+    hmm_s = "https://some-random-api.ml/img/pikachu"
+    r = requests.get(url=hmm_s).json()
+    image_s = r["link"]
+    await client.send_video(message.chat.id, image_s)
+    if image_s.endswith(".png"):
+        await client.send_photo(message.chat.id, image_s)
+        return
+    if image_s.endswith(".jpg"):
+        await client.send_photo(message.chat.id, image_s)
+        return
+    await message.delete()
+
+
+@Client.on_message(filters.command("hmm", cmd) & filters.me)
 async def hello_world(client: Client, message: Message):
     mg = await edit_or_reply(
         message,
@@ -188,27 +191,9 @@ async def hello_world(client: Client, message: Message):
     await mg.edit("aahhhhhhh")
     await asyncio.sleep(0.2)
     await mg.edit("aaahhhhhhhh")
-    
-@Client.on_message(
-    filters.command(["shoot"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def gunid(client: Client, message: Message):
-    await edit_or_reply(
-        message,
-       "░▐█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▄\n"
-       "░███████████████████████....⁍\n"
-       "░▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓◤\n"
-       "╬▀░▐▓▓▓▓▓▓▌▀█░░░█▀░\n"
-       "▒░░▓▓▓▓▓▓█▄▄▄▄▄█▀╬░\n"
-       "░░█▓▓▓▓▓▌░▒▒▒▒▒▒▒▒▒\n"
-       "░▐█▓▓▓▓▓░░▒▒▒▒▒▒▒▒▒\n"
-       "░▐██████▌╬░▒▒▒▒▒▒▒▒\n",
-    )
+
 
 @Client.on_message(filters.command("brain", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["brain"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
 async def pijtau(client: Client, message: Message):
     if message.forward_from:
         return
@@ -238,9 +223,6 @@ async def pijtau(client: Client, message: Message):
 
 
 @Client.on_message(filters.command("bomb", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["bomb"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
 async def gahite(client: Client, message: Message):
     if message.forward_from:
         return
@@ -267,9 +249,6 @@ async def gahite(client: Client, message: Message):
 
 
 @Client.on_message(filters.command("call", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["call"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
 async def hajqag(client: Client, message: Message):
     if message.forward_from:
         return
@@ -302,9 +281,6 @@ async def hajqag(client: Client, message: Message):
 
 
 @Client.on_message(filters.command("kill", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["kill"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
 async def gahah(client: Client, message: Message):
     if message.forward_from:
         return
@@ -330,47 +306,7 @@ async def gahah(client: Client, message: Message):
         await message.edit(animation_chars[i % 12])
 
 
-                           
-
-@Client.on_message(filters.command("theart", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["theart"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def gahah(client: Client, message: Message):
-    if message.forward_from:
-        return
-    await message.edit("❤️")
-    await asyncio.sleep(0.5)
-    await message.edit("🧡")
-    await asyncio.sleep(0.5)
-    await message.edit("💛")
-    await asyncio.sleep(0.5)
-    await message.edit("💚")
-    await asyncio.sleep(0.5)
-    await message.edit("💙")
-    await asyncio.sleep(0.5)
-    await message.edit("💜")
-    await asyncio.sleep(0.5)
-    await message.edit("🖤")
-    await asyncio.sleep(0.5)
-    await message.edit("💘")
-    await asyncio.sleep(0.5)
-    await message.edit("💝")
-    await asyncio.sleep(0.5)
-    await message.edit("❤️")
-    await asyncio.sleep(0.5)
-    await message.edit("🧡")
-    await asyncio.sleep(0.5)
-    await message.edit("💛")
-    await asyncio.sleep(0.5)
-    await message.edit("💝")
-    await asyncio.sleep(0.5)
-    await message.edit("💜")
-
-#@Client.on_message(filters.command("wtf", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["wtf"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("wtf", cmd) & filters.me)
 async def gagahkah(client: Client, message: Message):
     if message.forward_from:
         return
@@ -390,10 +326,7 @@ async def gagahkah(client: Client, message: Message):
         await message.edit(animation_chars[i % 5])
 
 
-#@Client.on_message(filters.command("ding", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["ding"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("ding", cmd) & filters.me)
 async def gkahgagw(client: Client, message: Message):
     animation_interval = 0.3
     animation_ttl = range(0, 30)
@@ -418,10 +351,7 @@ async def gkahgagw(client: Client, message: Message):
         await message.edit(animation_chars[i % 10])
 
 
-#@Client.on_message(filters.command("hypo", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["hypo"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("hypo", cmd) & filters.me)
 async def okihakga(client: Client, message: Message):
     if message.forward_from:
         return
@@ -450,10 +380,7 @@ async def okihakga(client: Client, message: Message):
         await message.edit(animation_chars[i % 15])
 
 
-#@Client.on_message(filters.command(["gangsta", "gang", "gangstar"], cmd) & filters.me)
-@Client.on_message(
-    filters.command(["gangsta", "gang", "gangstar"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["gangsta", "gang", "gangstar"], cmd) & filters.me)
 async def gajjajay(client: Client, message: Message):
     await message.edit("EVERyBOdy")
     await asyncio.sleep(0.3)
@@ -472,10 +399,7 @@ async def gajjajay(client: Client, message: Message):
     await message.edit("EVERyBOdy iZ GangSTur UNtIL I ArRivE 🔥🔥🔥")
 
 
-#@Client.on_message(filters.command("charging", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["charging"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("charging", cmd) & filters.me)
 async def timer_blankx(client: Client, message: Message):
     txt = (
         message.text[10:]
@@ -494,11 +418,8 @@ async def timer_blankx(client: Client, message: Message):
     )
 
 
-#@Client.on_message(filters.command(["cock"], cmd) & filters.me)
-@Client.on_message(
-    filters.command(["cock"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def cock(client: Client, message: Message):
+@Client.on_message(filters.command(["koc", "kocok"], cmd) & filters.me)
+async def kocok(client: Client, message: Message):
     e = await edit_or_reply(message, "8✊===D")
     await e.edit("8=✊==D")
     await e.edit("8==✊=D")
@@ -531,10 +452,7 @@ async def cock(client: Client, message: Message):
     await e.edit("😭😭😭😭")
 
 
-#@Client.on_message(filters.command(["fuck", "fucek"], cmd) & filters.me)
-@Client.on_message(
-    filters.command(["fuck", "fucek"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["fuck", "fucek"], cmd) & filters.me)
 async def ngefuck(client: Client, message: Message):
     e = await edit_or_reply(message, ".                       /¯ )")
     await e.edit(".                       /¯ )\n                      /¯  /")
@@ -564,10 +482,7 @@ async def ngefuck(client: Client, message: Message):
     )
 
 
-#@Client.on_message(filters.command("hack", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["hack"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("hack", cmd) & filters.me)
 async def hak(client: Client, message: Message):
     await message.edit_text("Looking for WhatsApp databases in targeted person...")
     await asyncio.sleep(2)
@@ -626,12 +541,25 @@ async def hak(client: Client, message: Message):
     )
 
 
+@Client.on_message(filters.command(["kontol", "kntl"], cmd) & filters.me)
+async def kontol(client: Client, message: Message):
+    emoji = get_text(message)
+    kontol = MEMES.GAMBAR_KONTOL
+    if emoji:
+        kontol = kontol.replace("⡀", emoji)
+    await message.edit(kontol)
 
 
-#@Client.on_message(filters.command("dino", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["dino"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["penis", "dick"], cmd) & filters.me)
+async def titid(client: Client, message: Message):
+    emoji = get_text(message)
+    titid = MEMES.GAMBAR_TITIT
+    if emoji:
+        titid = titid.replace("😋", emoji)
+    await message.edit(titid)
+
+
+@Client.on_message(filters.command("dino", cmd) & filters.me)
 async def adadino(client: Client, message: Message):
     typew = await edit_or_reply(message, "`DIN DINNN.....`")
     await asyncio.sleep(1)
@@ -688,15 +616,239 @@ async def adadino(client: Client, message: Message):
     await typew.edit("`-ENDED-`")
 
 
+@Client.on_message(filters.command(["sayang", "syg"], cmd) & filters.me)
+async def zeyenk(client: Client, message: Message):
+    e = await edit_or_reply(message, "I LOVEE YOUUU 💕")
+    await e.edit("💝💘💓💗")
+    await e.edit("💞💕💗💘")
+    await e.edit("💝💘💓💗")
+    await e.edit("💞💕💗💘")
+    await e.edit("💘💞💗💕")
+    await e.edit("💘💞💕💗")
+    await e.edit("SAYANG KAMU 💝💖💘")
+    await e.edit("💝💘💓💗")
+    await e.edit("💞💕💗💘")
+    await e.edit("💘💞💕💗")
+    await e.edit("SAYANG")
+    await e.edit("KAMU")
+    await e.edit("SELAMANYA 💕")
+    await e.edit("💘💘💘💘")
+    await e.edit("SAYANG")
+    await e.edit("KAMU")
+    await e.edit("SAYANG")
+    await e.edit("KAMU")
+    await e.edit("I LOVE YOUUUU")
+    await e.edit("MY BABY")
+    await e.edit("💕💞💘💝")
+    await e.edit("💘💕💞💝")
+    await e.edit("SAYANG KAMU💞")
 
 
+@Client.on_message(filters.command("gabut", cmd) & filters.me)
+async def menggabut(client: Client, message: Message):
+    e = await edit_or_reply(message, "`PERNAAHHHHH KAHHH KAUUU COUNTING`")
+    await e.edit("`WHAT KKKKKK LOVE LOOKS LIKE`")
+    await e.edit("`HAIRBUUUT WARNAAA WARNII`")
+    await e.edit("`LIKE TOOTBALL`")
+    await e.edit("`IMUUUTTTTT LUCUUU`")
+    await e.edit("`ALTHOUGH IT'S NOT TOO HIGH`")
+    await e.edit("`GW GABUUTTTT`")
+    await e.edit("`EMMMM THE BACOT`")
+    await e.edit("`GABUTTTT WOI GABUT`")
+    await e.edit("🙈🙈🙈🙈")
+    await e.edit("🙉🙉🙉🙉")
+    await e.edit("🙈🙈🙈🙈")
+    await e.edit("🙉🙉🙉🙉")
+    await e.edit("`CILUUUKKK BAAAAA`")
+    await e.edit("🙉🙉🙉🙉")
+    await e.edit("🐢                       🚶")
+    await e.edit("🐢                      🚶")
+    await e.edit("🐢                     🚶")
+    await e.edit("🐢                    🚶")
+    await e.edit("🐢                   🚶")
+    await e.edit("🐢                  🚶")
+    await e.edit("🐢                 🚶")
+    await e.edit("🐢                🚶")
+    await e.edit("🐢               🚶")
+    await e.edit("🐢              🚶")
+    await e.edit("🐢             🚶")
+    await e.edit("🐢            🚶")
+    await e.edit("🐢           🚶")
+    await e.edit("🐢          🚶")
+    await e.edit("🐢         🚶")
+    await e.edit("🐢        🚶")
+    await e.edit("🐢       🚶")
+    await e.edit("🐢      🚶")
+    await e.edit("🐢     🚶")
+    await e.edit("🐢    🚶")
+    await e.edit("🐢   🚶")
+    await e.edit("🐢  🚶")
+    await e.edit("🐢 🚶")
+    await e.edit("🐢🚶")
+    await asyncio.sleep(1)
+    await e.edit("🚶🐢")
+    await e.edit("🚶 🐢")
+    await e.edit("🚶  🐢")
+    await e.edit("🚶   🐢")
+    await e.edit("🚶    🐢")
+    await e.edit("🚶     🐢")
+    await e.edit("🚶      🐢")
+    await e.edit("🚶       🐢")
+    await e.edit("🚶        🐢")
+    await e.edit("🚶         🐢")
+    await e.edit("🚶          🐢")
+    await e.edit("🚶           🐢")
+    await e.edit("🚶            🐢")
+    await e.edit("🚶             🐢")
+    await e.edit("🚶              🐢")
+    await e.edit("🚶               🐢")
+    await e.edit("🚶                🐢")
+    await e.edit("🚶                 🐢")
+    await e.edit("🚶                  🐢")
+    await e.edit("🚶                   🐢")
+    await e.edit("🚶                    🐢")
+    await e.edit("🚶                     🐢")
+    await e.edit("🚶                      🐢")
+    await e.edit("🚶                       🐢")
+    await e.edit("🚶                        🐢")
+    await e.edit("🚶                         🐢")
+    await e.edit("🚶                          🐢")
+    await e.edit("🚶                           🐢")
+    await e.edit("🚶                            🐢")
+    await e.edit("🚶                             🐢")
+    await e.edit("🚶                              🐢")
+    await e.edit("🚶                               🐢")
+    await e.edit("🚶                                🐢")
+    await e.edit("🚶                                 🐢")
+    await e.edit("`AHHH MANTAP`")
+    await e.edit("🙉")
+    await e.edit("🙈")
+    await e.edit("🙉")
+    await e.edit("🙈")
+    await e.edit("🙉")
+    await e.edit("😂")
+    await e.edit("🐢                       🚶")
+    await e.edit("🐢                      🚶")
+    await e.edit("🐢                     🚶")
+    await e.edit("🐢                    🚶")
+    await e.edit("🐢                   🚶")
+    await e.edit("🐢                  🚶")
+    await e.edit("🐢                 🚶")
+    await e.edit("🐢                🚶")
+    await e.edit("🐢               🚶")
+    await e.edit("🐢              🚶")
+    await e.edit("🐢             🚶")
+    await e.edit("🐢            🚶")
+    await e.edit("🐢           🚶")
+    await e.edit("🐢          🚶")
+    await e.edit("🐢         🚶")
+    await e.edit("🐢        🚶")
+    await e.edit("🐢       🚶")
+    await e.edit("🐢      🚶")
+    await e.edit("🐢     🚶")
+    await e.edit("🐢    🚶")
+    await e.edit("🐢   🚶")
+    await e.edit("🐢  🚶")
+    await e.edit("🐢 🚶")
+    await e.edit("🐢🚶")
+    await asyncio.sleep(1)
+    await e.edit("🚶🐢")
+    await e.edit("🚶 🐢")
+    await e.edit("🚶  🐢")
+    await e.edit("🚶   🐢")
+    await e.edit("🚶    🐢")
+    await e.edit("🚶     🐢")
+    await e.edit("🚶      🐢")
+    await e.edit("🚶       🐢")
+    await e.edit("🚶        🐢")
+    await e.edit("🚶         🐢")
+    await e.edit("🚶          🐢")
+    await e.edit("🚶           🐢")
+    await e.edit("🚶            🐢")
+    await e.edit("🚶             🐢")
+    await e.edit("🚶              🐢")
+    await e.edit("🚶               🐢")
+    await e.edit("🚶                🐢")
+    await e.edit("🚶                 🐢")
+    await e.edit("🚶                  🐢")
+    await e.edit("🚶                   🐢")
+    await e.edit("🚶                    🐢")
+    await e.edit("🚶                     🐢")
+    await e.edit("🚶                      🐢")
+    await e.edit("🚶                       🐢")
+    await e.edit("🚶                        🐢")
+    await e.edit("🚶                         🐢")
+    await e.edit("🚶                          🐢")
+    await e.edit("🚶                           🐢")
+    await e.edit("🚶                            🐢")
+    await e.edit("🚶                             🐢")
+    await e.edit("🚶                              🐢")
+    await e.edit("🚶                               🐢")
+    await e.edit("🚶                                🐢")
+    await asyncio.sleep(1)
+    await e.edit("🐢                       🚶")
+    await e.edit("🐢                      🚶")
+    await e.edit("🐢                     🚶")
+    await e.edit("🐢                    🚶")
+    await e.edit("🐢                   🚶")
+    await e.edit("🐢                  🚶")
+    await e.edit("🐢                 🚶")
+    await e.edit("🐢                🚶")
+    await e.edit("🐢               🚶")
+    await e.edit("🐢              🚶")
+    await e.edit("🐢             🚶")
+    await e.edit("🐢            🚶")
+    await e.edit("🐢           🚶")
+    await e.edit("🐢          🚶")
+    await e.edit("🐢         🚶")
+    await e.edit("🐢        🚶")
+    await e.edit("🐢       🚶")
+    await e.edit("🐢      🚶")
+    await e.edit("🐢     🚶")
+    await e.edit("🐢    🚶")
+    await e.edit("🐢   🚶")
+    await e.edit("🐢  🚶")
+    await e.edit("🐢 🚶")
+    await e.edit("🐢🚶")
+    await asyncio.sleep(1)
+    await e.edit("🚶🐢")
+    await e.edit("🚶 🐢")
+    await e.edit("🚶  🐢")
+    await e.edit("🚶   🐢")
+    await e.edit("🚶    🐢")
+    await e.edit("🚶     🐢")
+    await e.edit("🚶      🐢")
+    await e.edit("🚶       🐢")
+    await e.edit("🚶        🐢")
+    await e.edit("🚶         🐢")
+    await e.edit("🚶          🐢")
+    await e.edit("🚶           🐢")
+    await e.edit("🚶            🐢")
+    await e.edit("🚶             🐢")
+    await e.edit("🚶              🐢")
+    await e.edit("🚶               🐢")
+    await e.edit("🚶                🐢")
+    await e.edit("🚶                 🐢")
+    await e.edit("🚶                  🐢")
+    await e.edit("🚶                   🐢")
+    await e.edit("🚶                    🐢")
+    await e.edit("🚶                     🐢")
+    await e.edit("🚶                      🐢")
+    await e.edit("🚶                       🐢")
+    await e.edit("🚶                        🐢")
+    await e.edit("🚶                         🐢")
+    await e.edit("🚶                          🐢")
+    await e.edit("🚶                           🐢")
+    await e.edit("🚶                            🐢")
+    await e.edit("🚶                             🐢")
+    await e.edit("🚶                              🐢")
+    await e.edit("🚶                               🐢")
+    await e.edit("🚶                                🐢")
+    await e.edit("`GABUT`")
 
 
-#@Client.on_message(filters.command(["snake"], cmd) & filters.me)
-@Client.on_message(
-    filters.command(["snake"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def snake(client: Client, message: Message):
+@Client.on_message(filters.command(["ular"], cmd) & filters.me)
+async def ular(client: Client, message: Message):
     await edit_or_reply(
         message,
         "░░░░▓\n"
@@ -811,11 +963,8 @@ async def snake(client: Client, message: Message):
     )
 
 
-#@Client.on_message(filters.command(["helicopter", "heli"], cmd) & filters.me)
-@Client.on_message(
-    filters.command(["helicopter", "heli"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def helicopter(client: Client, message: Message):
+@Client.on_message(filters.command(["helikopter", "heli"], cmd) & filters.me)
+async def helikopter(client: Client, message: Message):
     await edit_or_reply(
         message,
         "▬▬▬.◙.▬▬▬ \n"
@@ -837,22 +986,16 @@ async def helicopter(client: Client, message: Message):
     )
 
 
-#@Client.on_message(filters.command("gf", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["gf"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def gf(client: Client, message: Message):
+@Client.on_message(filters.command("tembak", cmd) & filters.me)
+async def dornembak(client: Client, message: Message):
     await edit_or_reply(
         message,
         "_/﹋\\_\n" "(҂`_´)\n" "<,︻╦╤─ ҉\n" r"_/﹋\_" "\n**Do you want to be my girlfriend??!**",
     )
 
 
-#@Client.on_message(filters.command("drugs", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["drugs"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def drugs(client: Client, message: Message):
+@Client.on_message(filters.command("bundir", cmd) & filters.me)
+async def ngebundir(client: Client, message: Message):
     await edit_or_reply(
         message,
         "`Drugs Everything...`          \n　　　　　|"
@@ -871,14 +1014,37 @@ async def drugs(client: Client, message: Message):
         "　　　　　 Ｕ Ｕ\n",
     )
 
+@Client.on_message(filters.command(["ange", "sange"], cmd) & filters.me)
+async def kocok(client: Client, message: Message):
+    e = await edit_or_reply(message, "Ayanggg 😖")
+    await asyncio.sleep(2)
+    await e.edit("Aku Ange 😫")
+    await asyncio.sleep(2)
+    await e.edit("Come on Pisces Yang 🤤")
 
 
+@Client.on_message(filters.command(["lipkol", "sleepcall"], cmd) & filters.me)
+async def lipkol(client: Client, message: Message):
+    e = await edit_or_reply(message, "Ayanggg 😖")
+    await asyncio.sleep(2)
+    await e.edit("Kangeeen 👉👈")
+    await asyncio.sleep(2)
+    await e.edit("Pinkie's sleeping bag is Yang 🥺👉👈")
+    
 
-#@Client.on_message(filters.command(["run"], cmd) & filters.me)
-@Client.on_message(
-    filters.command(["run"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def run(client: Client, message: Message):
+@Client.on_message(filters.command(["nakal", "bandel"], cmd) & filters.me)
+async def nakal(client: Client, message: Message):
+    e = await edit_or_reply(message, "Ayanggg ih🥺")
+    await asyncio.sleep(2)
+    await e.edit("Very naughty bro 🥺")
+    await asyncio.sleep(2)
+    await e.edit("I don't like Ayang 😠")
+    await asyncio.sleep(2)
+    await e.edit("Anyway, I don't like Ig 😠")
+
+
+@Client.on_message(filters.command(["awk", "awikwok"], cmd) & filters.me)
+async def awikwok(client: Client, message: Message):
     await edit_or_reply(
         message,
         "────██──────▀▀▀██\n"
@@ -889,11 +1055,8 @@ async def run(client: Client, message: Message):
     )
 
 
-#@Client.on_message(filters.command("thumb", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["thumb"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def thumb(client: Client, message: Message):
+@Client.on_message(filters.command("y", cmd) & filters.me)
+async def ysaja(client: Client, message: Message):
     await edit_or_reply(
         message,
         "‡‡‡‡‡‡‡‡‡‡‡‡▄▄▄▄\n"
@@ -912,10 +1075,7 @@ async def thumb(client: Client, message: Message):
     )
 
 
-#@Client.on_message(filters.command("tank", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["tank"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("tank", cmd) & filters.me)
 async def tank(client: Client, message: Message):
     await edit_or_reply(
         message,
@@ -926,15 +1086,12 @@ async def tank(client: Client, message: Message):
     )
 
 
-#@Client.on_message(filters.command("cat", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["cat"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def cat(client: Client, message: Message):
+@Client.on_message(filters.command("babi", cmd) & filters.me)
+async def babi(client: Client, message: Message):
     await edit_or_reply(
         message,
         "┈┈┏━╮╭━┓┈╭━━━━╮\n"
-        "┈┈┃┏┗┛┓┃╭┫cat ┃\n"
+        "┈┈┃┏┗┛┓┃╭┫Ngok ┃\n"
         "┈┈╰┓▋▋┏╯╯╰━━━━╯\n"
         "┈╭━┻╮╲┗━━━━╮╭╮┈\n"
         "┈┃▎▎┃╲╲╲╲╲╲┣━╯┈\n"
@@ -944,11 +1101,8 @@ async def cat(client: Client, message: Message):
     )
 
 
-#@Client.on_message(filters.command(["pat"], cmd) & filters.me)
-@Client.on_message(
-    filters.command(["pat"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def pat(client: Client, message: Message):
+@Client.on_message(filters.command(["ajg", "anjg"], cmd) & filters.me)
+async def anjg(client: Client, message: Message):
     await edit_or_reply(
         message,
         "╥━━━━━━━━╭━━╮━━┳\n"
@@ -960,11 +1114,8 @@ async def pat(client: Client, message: Message):
     )
 
 
-#@Client.on_message(filters.command("nolove", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["nolove"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def nolove(client: Client, message: Message):
+@Client.on_message(filters.command("nah", cmd) & filters.me)
+async def nahlove(client: Client, message: Message):
     typew = await edit_or_reply(
         message, "`\n(\\_/)`" "`\n(●_●)`" "`\n />💖 *This is for you`"
     )
@@ -972,11 +1123,8 @@ async def nolove(client: Client, message: Message):
     await typew.edit("`\n(\\_/)`" "`\n(●_●)`" "`\n💖<\\  *tap IB OO that one`")
 
 
-#@Client.on_message(filters.command("scam", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["scam"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def scam(client: Client, message: Message):
+@Client.on_message(filters.command("santet", cmd) & filters.me)
+async def santet(client: Client, message: Message):
     typew = await edit_or_reply(message, "`Activates Witchcraft Commands Online....`")
     await asyncio.sleep(2)
     await typew.edit("`Search for This Person's Name...`")
@@ -1286,10 +1434,7 @@ async def scam(client: Client, message: Message):
     await asyncio.sleep(1)
     await typew.edit("**Target Successfully Scammed Online 🥴**")
 
-#@Client.on_message(filters.command(["ror", "ah"], cmd) & filters.me)
-@Client.on_message(
-    filters.command(["ror", "ah"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["ror", "ah"], cmd) & filters.me)
 async def hearts(client: Client, message: Message):
     await phase1(message)
     await asyncio.sleep(SLEEP * 1.5)
@@ -1303,34 +1448,43 @@ async def hearts(client: Client, message: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 ᴀɴɪᴍᴀᴛɪᴏɴ",
+    "animation",
     [
         ["fuck", "To display the middle finger animation."],
         ["ror", "To display a ror animation."],
         ["dino", "To display an animation of being chased by a dino."],
-        ["scam", "To display an online blackmail animation."],
-        ["snake", "To display the snake animation."],
+        ["santet", "To display an online blackmail animation."],
+        ["gabut", "To display the latch animation."],
+        ["sayang", "To display animation darling."],
         ["hack", "To display a fake kicking animation."],
         ["bomb", "To display the Bomb animation."],
         ["brain", "To display Brain animation 🧠."],
-        ["gf","To display gf art."],
-        ["drugs", "To display drugs art."],
-        ["helicopter", "To display helicopter art."],
-        ["thumb", "To display art thumb."],
-        ["theart", "To display random heart."],
-        ["run", "For displays art run."],
-        ["nolove", "To show art love."],
-        ["pat", "To display pat ​​art."],
-        ["cat", "To display cat art."],
+        ["kontol", "To display dick art."],
+        ["penis", "To display penis art with emojis."],
+        ["tembak","To display shooting art."],
+        ["bundir", "To display bundir art."],
+        ["helikopter", "To display helicopter art."],
+        ["y", "To display art y sj."],
+        ["awk", "For displays art aowkaowkaowk."],
+        ["ange", "To display art ange."],
+        ["lipkol", "To display Ayang's art."],
+        ["nakal", "To display naughty art."],
+        ["nah", "To show art love."],
+        ["ajg", "To display dog ​​art."],
+        ["babi", "To display pig art."],
         ["hug", "To get A Hug Gifs anime."],
         ["hmm", "Get Random Hmmm."],
+        ["wink", "To Get A Winking Gifs."],
         ["love", "To Propose Someone."],
         ["loveyou", "It Will Send Random Emojis."],
         [
             "pat",
             "To get a pat gifs",
         ],
-        
+        [
+            "pikachu",
+            "to get a Pikachu Gifs",
+        ],
         [
             "kill",
             "To kill Someone randomly",

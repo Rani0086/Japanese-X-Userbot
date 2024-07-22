@@ -1,39 +1,3 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
-
-
-#REMAKE BY : NOBITA XD AND TRYTOLIVEALONE
-
-
-
 import asyncio
 
 from pyrogram import Client, filters
@@ -41,7 +5,6 @@ from pyrogram.enums import ChatType, UserStatus
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
-from config import SUDO_USERS
 from X import BOTLOG_CHATID
 from X.helpers.basic import edit_or_reply
 
@@ -64,9 +27,7 @@ async def inviteee(client: Client, message: Message):
     await mg.edit(f"`Sucessfully Added {len(user_list)} To This Group / Channel!`")
 
 
-@Client.on_message(
-    filters.command(["inviteall"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["inviteall"], cmd) & filters.me)
 async def inv(client: Client, message: Message):
     X = await edit_or_reply(message, "`Processing . . .`")
     text = message.text.split(" ", 1)
@@ -91,9 +52,7 @@ async def inv(client: Client, message: Message):
                 await mg.delete()
 
 
-@Client.on_message(
-    filters.command(["invitelink"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("invitelink", cmd) & filters.me)
 async def invite_link(client: Client, message: Message):
     X = await edit_or_reply(message, "`Processing...`")
     if message.chat.type in [ChatType.GROUP, ChatType.SUPERGROUP]:
@@ -106,16 +65,16 @@ async def invite_link(client: Client, message: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 ɪɴᴠɪᴛᴇ",
+    "invite",
     [
         [
             "invitelink",
-            "Tᴏ ɢᴇᴛ ᴀɴ ɪɴᴠɪᴛᴇ ʟɪɴᴋ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀᴛ ɢʀᴏᴜᴘ. [Nᴇᴇᴅ Aᴅᴍɪɴ]",
+            "To get an invite link to your chat group. [Need Admin]",
         ],
-        ["invite @username", "Tᴏ Iɴᴠɪᴛᴇ Mᴇᴍʙᴇʀꜱ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ."],
+        ["invite @username", "To Invite Members to your group."],
         [
             "inviteall @usernamegc",
-            "Tᴏ Iɴᴠɪᴛᴇ Mᴇᴍʙᴇʀꜱ ғʀᴏᴍ ᴀɴᴏᴛʜᴇʀ ɢʀᴏᴜᴘ ᴄʜᴀᴛ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴄʜᴀᴛ,,(NOTES Fᴏʀ ID 𝟼/𝟻, ᴅᴏɴ'ᴛ ᴛʀʏ ᴛʜɪꜱ ғᴇᴀᴛᴜʀᴇ ᴏʀ ʏᴏᴜ'ʟʟ ᴄʀʏ).",
+            "To Invite Members from another group chat to your group chat,(NOTES For ID 6/5, don't try this feature or you'll cry).",
         ],
     ],
       )

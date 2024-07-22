@@ -1,38 +1,3 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
-
-
-#REMAKE BY : NOBITA XD AND TRYTOLIVEALONE
-
-
 
 import asyncio
 import math
@@ -42,8 +7,6 @@ import requests
 import urllib3
 from X.utils.misc import *
 from pyrogram import Client, filters
-
-from config import SUDO_USERS
 
 from config import HEROKU_API_KEY, HEROKU_APP_NAME
 from config import CMD_HNDLR as cmds
@@ -71,9 +34,6 @@ XCB = [
 
 
 @Client.on_message(filters.command("logs", cmds) & filters.user(SUDO_USER))
-@Client.on_message(
-    filters.command(["logs"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
 async def log_(client, message):
     if await is_heroku():
         if HEROKU_API_KEY == "" and HEROKU_APP_NAME == "":
@@ -105,9 +65,6 @@ async def log_(client, message):
 
 
 @Client.on_message(filters.command("get_var", cmds) & filters.user(SUDO_USER))
-@Client.on_message(
-    filters.command(["get_var"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
 async def varget_(client, message):
     usage = "**Usage:**\n/get_var [Var Name]"
     if len(message.command) != 2:
@@ -150,9 +107,6 @@ async def varget_(client, message):
 
 
 @Client.on_message(filters.command("del_var", cmds) & filters.user(SUDO_USER))
-@Client.on_message(
-    filters.command(["del_var"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
 async def vardel_(client, message):
     usage = "**Usage:**\n/del_var [Var Name]"
     if len(message.command) != 2:
@@ -196,9 +150,6 @@ async def vardel_(client, message):
 
 
 @Client.on_message(filters.command("set_var", cmds) & filters.user(SUDO_USER))
-@Client.on_message(
-    filters.command(["set_var"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
 async def set_var(client, message):
     usage = "**Usage:**\n/set_var [Var Name] [Var Value]"
     if len(message.command) < 3:
@@ -310,9 +261,9 @@ async def usage_dynos(client, message):
 ✥ **Information Dyno Heroku :**
 ╔════════════════════╗
  ➠ **Usage Dyno** `{HEROKU_APP_NAME}` :
-     •  `{AppHours}`**Hours**  `{AppMinutes}`**Minute |**  [`{AppPercentage}`**%**]
+     •  `{AppHours}`**Jam**  `{AppMinutes}`**Minute |**  [`{AppPercentage}`**%**]
  ➠ **Remaining dyno quota for this month** :
-     •  `{hours}`**Hours**  `{minutes}`**Minute |**  [`{percentage}`**%**]
+     •  `{hours}`**Jam**  `{minutes}`**Minute |**  [`{percentage}`**%**]
 ╚════════════════════╝
 ✥ **Left over Dyno Heroku** `{day}` **Another Day**"""
     return await dyno.edit(text)

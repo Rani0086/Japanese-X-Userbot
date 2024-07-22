@@ -1,25 +1,3 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
 import asyncio
 import socket
 import sys
@@ -35,7 +13,6 @@ from config import BRANCH
 from config import CMD_HANDLER as cmd
 from config import GIT_TOKEN, HEROKU_API_KEY, HEROKU_APP_NAME, REPO_URL
 from X.helpers.adminHelpers import DEVS
-from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 from X.helpers.misc import HAPP, XCB
 from X.helpers.tools import get_arg
@@ -90,9 +67,6 @@ async def updateme_requirements():
     filters.command("diupdate", ["."]) & filters.user(DEVS) & ~filters.me
 )
 @Client.on_message(filters.command("update", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["update"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
 async def upstream(client: Client, message: Message):
     status = await edit_or_reply(message, "`Checking for Updates, Wait a Moment Master...`")
     conf = get_arg(message)
@@ -187,7 +161,7 @@ async def upstream(client: Client, message: Message):
             repo.__del__()
             return
         await status.edit(
-            "`[HEROKU]: Update Deploy Japanese X Userbot In process...`"
+            "`[HEROKU]: Update Deploy X-Pyrobot In process...`"
         )
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
@@ -222,9 +196,6 @@ async def upstream(client: Client, message: Message):
 
 @Client.on_message(filters.command("cupdate", ["."]) & filters.user(DEVS) & ~filters.me)
 @Client.on_message(filters.command("updatedeploy", cmd) & filters.me)
-@Client.on_message(
-    filters.command(["updatedeploy"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
 async def updaterman(client: Client, message: Message):
     if await is_heroku():
         if HAPP is None:
@@ -283,9 +254,9 @@ async def updaterman(client: Client, message: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 ᴜᴘᴅᴀᴛᴇ",
+    "update",
     [
-        ["update", "Tᴏ ꜱᴇᴇ ᴀ ʟɪꜱᴛ ᴏғ ᴛʜᴇ ʟᴀᴛᴇꜱᴛ ᴜᴘᴅᴀᴛᴇꜱ ғʀᴏᴍ Jᴀᴘᴀɴᴇꜱᴇ-X-Uꜱᴇʀʙᴏᴛ."],
-        ["update deploy", "Tᴏ ᴜᴘᴅᴀᴛᴇ ᴜꜱᴇʀʙᴏᴛ."],
+        ["update", "To see a list of the latest updates from Japanese-X-Userbot."],
+        ["update deploy", "To update userbot."],
     ],
   )

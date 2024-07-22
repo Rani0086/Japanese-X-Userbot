@@ -1,38 +1,3 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
-
-#REMAKE BY NOBITA XD AND TRYTOLIVEALONE
-
-
-
 import os
 from asyncio import sleep
 
@@ -40,7 +5,6 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
-from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 from X.helpers.PyroHelpers import ReplyCheck
 from X.utils.misc import extract_user
@@ -51,9 +15,7 @@ flood = {}
 profile_photo = "X/modules/cache/pfp.jpg"
 
 
-@Client.on_message(
-    filters.command(["block"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["block"], cmd) & filters.me)
 async def block_user_func(client: Client, message: Message):
     user_id = await extract_user(message)
     X = await edit_or_reply(message, "`Be patient, block again . . .`")
@@ -68,9 +30,7 @@ async def block_user_func(client: Client, message: Message):
     await message.edit(f"**managed to Block This Dick Kid** {umention}")
 
 
-@Client.on_message(
-    filters.command(["unblock"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["unblock"], cmd) & filters.me)
 async def unblock_user_func(client: Client, message: Message):
     user_id = await extract_user(message)
     X = await edit_or_reply(message, "`Be patient and unblock stupid people . . .`")
@@ -85,9 +45,7 @@ async def unblock_user_func(client: Client, message: Message):
     await message.edit(f"**Successfully Unblocked This Dick Boy ✌** {umention}")
 
 
-@Client.on_message(
-    filters.command(["setname"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["setname"], cmd) & filters.me)
 async def setname(client: Client, message: Message):
     X = await edit_or_reply(message, "`Be patient Change name. . .`")
     if len(message.command) == 1:
@@ -107,9 +65,7 @@ async def setname(client: Client, message: Message):
         )
 
 
-@Client.on_message(
-    filters.command(["setbio"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["setbio"], cmd) & filters.me)
 async def set_bio(client: Client, message: Message):
     X = await edit_or_reply(message, "`Processing . . .`")
     if len(message.command) == 1:
@@ -125,9 +81,7 @@ async def set_bio(client: Client, message: Message):
         return await X.edit("Provide text to set as bio.")
 
 
-@Client.on_message(
-    filters.command(["setpfp"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.me & filters.command(["setpfp"], cmd))
 async def set_pfp(client: Client, message: Message):
     replied = message.reply_to_message
     if (
@@ -151,9 +105,7 @@ async def set_pfp(client: Client, message: Message):
         await message.delete()
 
 
-@Client.on_message(
-    filters.command(["vpfp"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.me & filters.command(["vpfp"], cmd))
 async def view_pfp(client: Client, message: Message):
     user_id = await extract_user(message)
     if user_id:
@@ -173,16 +125,16 @@ async def view_pfp(client: Client, message: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 ᴘʀᴏғɪʟᴇ",
+    "profile",
     [
-        ["block", "Tᴏ ʙʟᴏᴄᴋ ᴛᴇʟᴇɢʀᴀᴍ ᴜꜱᴇʀꜱ"],
-        ["unblock", "Tᴏ ᴜɴʙʟᴏᴄᴋ ᴛᴇʟᴇɢʀᴀᴍ ᴜꜱᴇʀꜱ"],
-        ["setname", "Tᴏ Cʜᴀɴɢᴇ Tᴇʟᴇɢʀᴀᴍ Nᴀᴍᴇ."],
-        ["setbio", "Tᴏ Cʜᴀɴɢᴇ Tᴇʟᴇɢʀᴀᴍ Bɪᴏ."],
+        ["block", "To block telegram users"],
+        ["unblock", "To open the user you blocked"],
+        ["setname", "To Change Telegram Name."],
+        ["setbio", "To Change Telegram Bio."],
         [
             "setpfp",
-            "Rᴇᴘʟʏ Tᴏ Iᴍᴀɢᴇ Tʏᴘᴇ {cmd}ꜱᴇᴛᴘғᴘ Tᴏ Cʜᴀɴɢᴇ Tᴇʟᴇɢʀᴀᴍ Pʀᴏғɪʟᴇ Pʜᴏᴛᴏ.",
+            "Reply To Image Type {cmd}setpfp To Change Telegram Profile Photo.",
         ],
-        ["vpfp", "Tᴏ ꜱᴇᴇ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ᴜꜱᴇʀ'ꜱ ᴘʀᴏғɪʟᴇ ᴘʜᴏᴛᴏ."],
+        ["vpfp", "To see the current user's profile photo."],
     ],
   ) 

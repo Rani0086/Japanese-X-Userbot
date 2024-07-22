@@ -1,39 +1,3 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
-
-#REMAKE BY NOBITA XD AND TRYTOLIVEALONE
-
-
-
-
 import asyncio
 import os
 from io import BytesIO
@@ -43,7 +7,6 @@ import requests
 from bs4 import BeautifulSoup as bs
 from PIL import Image
 from pyrogram import Client, emoji, filters
-from config import SUDO_USERS
 from pyrogram.enums import ParseMode
 from pyrogram.errors import StickersetInvalid, YouBlockedUser
 from pyrogram.raw.functions.messages import GetStickerSet
@@ -59,9 +22,7 @@ from X.utils.tools import add_text_img, bash
 from .help import *
 
 
-@Client.on_message(
-    filters.command(["tikel", "kang"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["tikel", "kang"], cmd) & filters.me)
 async def kang(client: Client, message: Message):
     user = client.me
     replied = message.reply_to_message
@@ -282,9 +243,7 @@ async def get_response(message, client):
     return [x async for x in client.get_chat_history("Stickers", limit=1)][0].text
 
 
-@Client.on_message(
-    filters.command(["packinfo", "stickerinfo"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["packinfo", "stickerinfo"], cmd) & filters.me)
 async def packinfo(client: Client, message: Message):
     rep = await edit_or_reply(message, "`Processing...`")
     if not message.reply_to_message:
@@ -319,9 +278,8 @@ async def packinfo(client: Client, message: Message):
 """
     await rep.edit(output)
 
-@Client.on_message(
-    filters.command(["stickers"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+
+@Client.on_message(filters.command("stickers", cmd) & filters.me)
 async def cb_sticker(client: Client, message: Message):
     query = get_text(message)
     if not query:
@@ -341,9 +299,7 @@ async def cb_sticker(client: Client, message: Message):
     await xx.edit(reply)
 
 
-@Client.on_message(
-    filters.command(["tiny"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("tiny", cmd) & filters.me)
 async def tinying(client: Client, message: Message):
     reply = message.reply_to_message
     if not (reply and (reply.media)):
@@ -420,9 +376,7 @@ async def tinying(client: Client, message: Message):
     os.remove(ik)
 
 
-@Client.on_message(
-    filters.command(["mmf", "memify"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["mmf", "memify"], cmd) & filters.me)
 async def memify(client: Client, message: Message):
     if not message.reply_to_message_id:
         await message.edit_text("**Please reply to stikers!**")
@@ -448,9 +402,8 @@ async def memify(client: Client, message: Message):
     os.remove(meme)
 
 
-@Client.on_message(
-    filters.command(["get", "getsticker", "mtoi"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+
+@Client.on_message(filters.command(["get", "getsticker", "mtoi"], cmd) & filters.me)
 async def stick2png(client: Client, message: Message):
     try:
         await message.edit("`Downloading . . .`")
@@ -478,43 +431,43 @@ async def stick2png(client: Client, message: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 ꜱᴛɪᴄᴋᴇʀ",
+    "sticker",
     [
         [
             f"kang `atau` {cmd}tikel",
-            f"Balas {cmd}ᴋᴀɴɢ Tᴏ Sᴛɪᴄᴋᴇʀꜱ Oʀ Iᴍᴀɢᴇꜱ Tᴏ Aᴅᴅ Tᴏ Sᴛɪᴄᴋᴇʀ Pᴀᴄᴋ.",
+            f"Balas {cmd}kang To Stickers Or Images To Add To Sticker Pack.",
         ],
         [
             f"kang [emoji] `atau` {cmd}tikel [emoji]",
-            f"Tᴏ Aᴅᴅ ᴀɴᴅ ᴄᴜꜱᴛᴏᴍ ᴇᴍᴏɪɪ ꜱᴛɪᴄᴋᴇʀ Wʜᴇɴ Sᴛɪᴄᴋᴇʀ Nᴏ ᴘᴀᴄᴋ.\n\n`  •  **NOTE:** Tᴏ ᴄʀᴇᴀᴛᴇ ᴀ ɴᴇᴡ ꜱᴛɪᴄᴋᴇʀ ᴘᴀᴄᴋ, ᴜꜱᴇ ᴛʜᴇ ɴᴜᴍʙᴇʀꜱ ᴀᴛ ᴛʜᴇ ʙᴀᴄᴋ {cmd}kang\n  •  **CONTOH:** {cmd}ᴋᴀɴɢ 𝟸 ᴛᴏ ᴄʀᴇᴀᴛᴇ ᴀɴᴅ ꜱᴀᴠᴇ ᴛᴏ ꜱᴛɪᴄᴋᴇʀ ᴘᴀᴄᴋ ᴛᴏ 𝟸`",
+            f"To Add and custom emoji sticker When Sticker No pack.\n\n`  •  **NOTE:** To create a new sticker pack, use the numbers at the back {cmd}kang\n  •  **CONTOH:** {cmd}kang 2 to create and save to sticker pack to 2`",
         ],
         [
             f"packinfo `atau` {cmd}stickerinfo",
-            "Tᴏ Gᴇᴛ Iɴғᴏʀᴍᴀᴛɪᴏɴ Sᴛɪᴄᴋᴇʀ Pᴀᴄᴋ.",
+            "To Get Information Sticker Pack.",
         ],
-        ["get", "Rᴇᴘʟʏ ᴛᴏ ᴛʜᴇ ꜱᴛɪᴄᴋᴇʀ ᴛᴏ ɢᴇᴛ ᴀ ᴘʜᴏᴛᴏ ꜱᴛɪᴄᴋᴇʀ."],
-        ["stickers <name sticker>", "Tᴏ ꜱᴇᴀʀᴄʜ ғᴏʀ ꜱᴛɪᴄᴋᴇʀꜱ Pᴀᴄᴋ Bᴏᴛᴛᴏᴍ Tᴇxᴛ."],
+        ["get", "Reply to the sticker to get a photo sticker."],
+        ["stickers <name sticker>", "To search for stickers Pack."],
     ],
 )
 
 
 add_command_help(
-    "•─╼⃝𖠁 ᴍᴇᴍɪғʏ",
+    "memify",
     [
         [
-            "mmf Top Text ; Bᴏᴛᴛᴏᴍ Tᴇxᴛ",
-            "Rᴇᴘʟʏ Tᴏ Mᴇꜱꜱᴀɢᴇ Sᴛɪᴄᴋᴇʀꜱ ᴏʀ Pʜᴏᴛᴏꜱ ᴡɪʟʟ ʙᴇ ᴄᴏɴᴠᴇʀᴛᴇᴅ ɪɴᴛᴏ ꜱᴘᴇᴄɪғɪᴇᴅ ᴍᴇᴍᴇ ᴛᴇxᴛ ꜱᴛɪᴄᴋᴇʀꜱ.",
+            "mmf Top Text ; Bottom Text",
+            "Reply To Message Stickers or Photos will be converted into specified meme text stickers.",
         ],
     ],
 )
 
 
 add_command_help(
-    "•─╼⃝𖠁 ᴛɪɴʏ",
+    "tiny",
     [
         [
             "tiny <reply ke Photo/sticker>",
-            "Tᴏ Cʜᴀɴɢᴇ ᴛʜᴇ Sᴛɪᴄᴋᴇʀ ᴛᴏ Sᴍᴀʟʟ.",
+            "To Change the Sticker to Small.",
         ],
     ],
                   )

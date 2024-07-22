@@ -1,38 +1,8 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credit 
-# @Rizzvbss | @Whynan
-# How come?
-# © @KynanSupport
-# REMAKE BY : NOBITA XD AND TRYTOLIVEALONE
-
-
 import asyncio
 import random
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from config import CMD_HANDLER
-from config import SUDO_USERS
 from X import *
 from X.helpers.adminHelpers import DEVS
 from X.utils.misc import extract_user_and_reason
@@ -65,12 +35,10 @@ babi = [
 
 
 @Client.on_message(
-    filters.command(["fgban"], ".") & filters.user(DEVS) & ~filters.me
+    filters.command(["cigiben"], ".") & filters.user(DEVS) & ~filters.me
 )
-@Client.on_message(
-    filters.command(["fgban"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def fgban(client: Client, message: Message):
+@Client.on_message(filters.command(["giben"], cmd) & filters.me)
+async def giben(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message, sender_chat=True)
     if message.from_user.id != client.me.id:
         ex = await message.reply_text("`Gbaning...`")
@@ -101,12 +69,10 @@ async def fgban(client: Client, message: Message):
     await ex.edit(msg)
 
 @Client.on_message(
-    filters.command("fgmute", ["."]) & filters.user(DEVS) & ~filters.me
+    filters.command("cigimut", ["."]) & filters.user(DEVS) & ~filters.me
 )
-@Client.on_message(
-    filters.command(["fgmute"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def fgmute(client: Client, message: Message):
+@Client.on_message(filters.command(["gimut"], cmd) & filters.me)
+async def gimut(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message, sender_chat=True)
     if message.from_user.id != client.me.id:
         ex = await message.reply_text("`GMuting...`")
@@ -137,12 +103,10 @@ async def fgmute(client: Client, message: Message):
     await ex.edit(msg)
 
 @Client.on_message(
-    filters.command("fgkick", ["."]) & filters.user(DEVS) & ~filters.me
+    filters.command("cigikik", ["."]) & filters.user(DEVS) & ~filters.me
 )
-@Client.on_message(
-    filters.command(["fgkick"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def fgkick(client: Client, message: Message):
+@Client.on_message(filters.command(["gikik"], cmd) & filters.me)
+async def gikik(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message, sender_chat=True)
     if message.from_user.id != client.me.id:
         ex = await message.reply_text("`GKick...`")
@@ -174,12 +138,10 @@ async def fgkick(client: Client, message: Message):
 
 
 @Client.on_message(
-    filters.command("fgcast", ["."]) & filters.user(DEVS) & ~filters.me
+    filters.command("cigikes", ["."]) & filters.user(DEVS) & ~filters.me
 )
-@Client.on_message(
-    filters.command(["fgcast"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def fgcast(client: Client, message: Message):
+@Client.on_message(filters.command(["gikes"], cmd) & filters.me)
+async def gcast_cmd(client: Client, message: Message):
     if message.reply_to_message or get_arg(message):
         tex = await message.reply_text("`Started global broadcast...`")
     else:
@@ -192,11 +154,11 @@ async def fgcast(client: Client, message: Message):
     )
 
 add_command_help(
-    "•─╼⃝𖠁 Fᴀᴋᴇ",
+    "fake",
     [
-        [f"gban <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ>", "Fᴀᴋᴇ Gʟᴏʙᴀʟ Bᴀɴɴɪɴɢ."],
-        [f"gmute <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ>", "Fᴀᴋᴇ Gʟᴏʙᴀʟ Mᴜᴛᴇ."],
-        [f"gkick <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ>", "Fᴀᴋᴇ Gʟᴏʙᴀʟ Kɪᴄᴋ."],
-        [f"gcast <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ>", "Fᴀᴋᴇ Gʟᴏʙᴀʟ ʙʀᴏᴀᴅᴄᴀꜱᴛ."],
+        [f"giben <reply/username/userid>", "Fake Global Banning."],
+        [f"gimut <reply/username/userid>", "Fake Global Mute."],
+        [f"gikik <reply/username/userid>", "Fake Global Kick."],
+        [f"gikes <reply/username/userid>", "Fake Global broadcast."],
     ],
   )

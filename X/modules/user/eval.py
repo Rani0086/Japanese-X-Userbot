@@ -1,25 +1,3 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
 import sys
 import traceback
 from io import StringIO
@@ -29,8 +7,6 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from X.helpers.basic import edit_or_reply
 from config import OWNER_ID
-from config import SUDO_USERS
-from .help import *
 
 async def aexec(code, client: Client, message: Message):
     exec(
@@ -43,9 +19,7 @@ async def aexec(code, client: Client, message: Message):
 @Client.on_message(
     filters.command("eval", ["."]) & filters.user(int(OWNER_ID)) & ~filters.via_bot
 )
-@Client.on_message(
-    filters.command(["call"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("call", cmd) & filters.me)
 async def executor(client: Client, message: Message):
     if len(message.command) < 2:
         return await edit_or_reply(
@@ -78,12 +52,5 @@ async def executor(client: Client, message: Message):
         evaluation = stdout
     else:
         evaluation = "𝚂𝚄𝙲𝙲𝙴𝚂𝚂"
-    final_output = f"<b>⥤ ʀᴇsᴜʟᴛ :</b>\n<pre language='python'>{evaluation.strip()}</pre>"
+    final_output = f"**𝙾𝚄𝚃𝙿𝚄𝚃**:\n```{evaluation.strip()}```"
     await edit_or_reply(message, final_output) 
-
-add_command_help(
-    "•─╼⃝𖠁 Eᴠᴀʟ",
-    [
-       ["eval", "To execute code."],
-        ],
-)

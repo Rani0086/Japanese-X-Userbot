@@ -1,34 +1,3 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: NOBITA XD AND KUNAL 
-# Copyright (C) 2024 JAPANESE X USERBOT AND STORM USERBOT 
-#DON'T KANG FUCKING COWARD
-#BSDKE KANG KIYA TOH SOCH LIYO
-#AAG LAGA DUNGA TERE ANDAR 
-#SAMJHA ? 
-
-
-
 import asyncio
 from threading import Event
 
@@ -37,7 +6,6 @@ from pyrogram.types import Message
 
 from config import BLACKLIST_CHAT, BOTLOG_CHATID
 from config import CMD_HANDLER
-from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 from X.utils.misc import extract_args
 
@@ -56,9 +24,7 @@ def spam_allowed():
     return SPAM_COUNT[0] < 50
 
 
-@Client.on_message(
-    filters.command(["dpsam", "delayspam"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.me & filters.command(["dspam", "delayspam"], cmd))
 async def delayspam(client: Client, message: Message):
     if message.chat.id in BLACKLIST_CHAT:
         return await edit_or_reply(
@@ -148,12 +114,12 @@ async def spam_stick(client: Client, message: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 ꜱᴘᴀᴍ",
+    "spam",
     [
-        ["spam <ᴀᴍᴏᴜɴᴛ ꜱᴘᴀᴍ> <ᴛᴇxᴛ>", "Sᴘᴀᴍᴍɪɴɢ ᴛᴇxᴛꜱ ɪɴ ᴄʜᴀᴛ!!"],
+        ["spam <amount spam> <text>", "Spamming texts in chat!!"],
         [
-            "delayspam <ꜱᴇᴄᴏɴᴅ> <ꜱᴘᴀᴍ ᴄᴏᴜɴᴛ> <ᴛᴇxᴛ>",
-            "Sᴇɴᴅɪɴɢ ꜱᴘᴀᴍ ᴛᴇxᴛꜱ ᴡɪᴛʜ ᴀ ꜱᴘᴇᴄɪғɪᴇᴅ ᴅᴇʟᴀʏ ᴘᴇʀɪᴏᴅ!",
+            "delayspam <second> <spam count> <text>",
+            "Sending spam texts with a specified delay period!",
         ],
     ],
   )

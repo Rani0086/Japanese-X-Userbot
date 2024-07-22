@@ -1,37 +1,3 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
-
-
-#REMAKE BY : NOBITA XD 
-
 import time
 
 from pyrogram import Client, filters
@@ -55,7 +21,7 @@ async def afk(client: Client, message: Message):
     if len(message.text.split()) >= 2:
         set_afk(True, message.text.split(None, 1)[1])
         await message.edit(
-            "❏ {} <b>Aʟʀᴇᴀᴅʏ AFK!</b>\n└ <b>Bᴇᴄᴀᴜꜱᴇ:</b> <code>{}</code>".format(
+            "❏ {} <b>Already AFK!</b>\n└ <b>Because:</b> <code>{}</code>".format(
                 mention_markdown(message.from_user.id, message.from_user.first_name),
                 message.text.split(None, 1)[1],
             )
@@ -63,7 +29,7 @@ async def afk(client: Client, message: Message):
     else:
         set_afk(True, "")
         await message.edit(
-            "✘ {} <b>Aʟʀᴇᴀᴅʏ AFK</b> ✘".format(
+            "✘ {} <b>Already AFK</b> ✘".format(
                 mention_markdown(message.from_user.id, message.from_user.first_name)
             )
         )
@@ -88,13 +54,13 @@ async def afk_mentioned(client: Client, message: Message):
         AFK_RESTIRECT[cid] = int(time.time()) + DELAY_TIME
         if get["reason"]:
             await message.reply(
-                "❏ {} <b>Cᴜʀʀᴇɴᴛʟʏ AFK!</b>\n└ <b>Bᴇᴄᴀᴜꜱᴇ:</b> <code>{}</code>".format(
+                "❏ {} <b>Currently AFK!</b>\n└ <b>Because:</b> <code>{}</code>".format(
                     client.me.mention, get["reason"]
                 )
             )
         else:
             await message.reply(
-                f"<b>Sᴏʀʀʏ</b> {client.me.first_name} <b>Currently AFK!</b>"
+                f"<b>Sorry</b> {client.me.first_name} <b>Currently AFK!</b>"
             )
 
         _, message_type = get_message_type(message)
@@ -119,7 +85,7 @@ async def afk_mentioned(client: Client, message: Message):
         try:
             await client.send_message(
                 BOTLOG_CHATID,
-                "<b>#MENTION\n • Fʀᴏᴍ :</b> {}\n • <b>Gʀᴏᴜᴘ :</b> <code>{}</code>\n • <b>Mᴇꜱꜱᴀɢᴇ :</b> <code>{}</code>".format(
+                "<b>#MENTION\n • From :</b> {}\n • <b>Group :</b> <code>{}</code>\n • <b>Message :</b> <code>{}</code>".format(
                     message.from_user.mention,
                     message.chat.title,
                     text[:3500],
@@ -136,10 +102,10 @@ async def no_longer_afk(client: Client, message: Message):
     if get and get["afk"]:
         set_afk(False, "")
         try:
-            await client.send_message(BOTLOG_CHATID, "Yᴏᴜ ᴀʀᴇ ɴᴏ ʟᴏɴɢᴇʀ AFK!")
+            await client.send_message(BOTLOG_CHATID, "You are no longer AFK!")
         except BaseException:
             pass
-        text = "<b>Tᴏᴛᴀʟ {} Mᴇɴᴛɪᴏɴ Mᴏᴍᴇɴᴛ Cᴜʀʀᴇɴᴛʟʏ AFK<b>\n".format(len(MENTIONED))
+        text = "<b>Total {} Mention Moment Currently AFK<b>\n".format(len(MENTIONED))
         for x in MENTIONED:
             msg_text = x["text"]
             if len(msg_text) >= 11:
@@ -156,11 +122,3 @@ async def no_longer_afk(client: Client, message: Message):
         except BaseException:
             pass
         MENTIONED = []
-
-
-add_command_help(
-    "•─╼⃝𖠁 Aғᴋ",
-    [
-       ["afk", "Sᴇɴᴅ ᴀᴡᴀʏ ғʀᴏᴍ ᴋᴇʏʙᴏᴀʀᴅ ᴍᴇssᴀɢᴇ ɪɴ ᴛʜᴇ ᴄʜᴀᴛ."],
-        ],
-)

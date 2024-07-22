@@ -1,30 +1,7 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
 from asyncio import sleep
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config import SUDO_USERS
 from X.helpers import *
 from X.helpers.SQL.notes_sql import *
 from X.utils import *
@@ -33,9 +10,7 @@ from X import *
 from .help import *
 
 
-@Client.on_message(
-    filters.command(["notes"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("notes", cmd) & filters.me)
 async def list_notes(client, message):
     user_id = message.from_user.id
     notes = get_notes(str(user_id))
@@ -47,9 +22,7 @@ async def list_notes(client, message):
     await message.reply(msg)
 
 
-@Client.on_message(
-    filters.command(["delnote"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("delnote", cmd) & filters.me)
 async def remove_notes(client, message):
     notename = get_arg(message)
     user_id = message.from_user.id
@@ -60,9 +33,7 @@ async def remove_notes(client, message):
     return await message.reply("Successfully Delete Note: {}".format(notename))
 
 
-@Client.on_message(
-    filters.command(["save"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("save", cmd) & filters.me)
 async def simpan_note(client, message):
     keyword = get_arg(message)
     user_id = message.from_user.id
@@ -80,9 +51,7 @@ async def simpan_note(client, message):
     await message.reply(f"Saved successfully note {keyword}")
 
 
-@Client.on_message(
-    filters.command(["get"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("get", cmd) & filters.me)
 async def panggil_notes(client, message):
     notename = get_arg(message)
     user_id = message.from_user.id
@@ -93,15 +62,15 @@ async def panggil_notes(client, message):
     await msg_o.copy(message.chat.id, reply_to_message_id=message.id)
 
 add_command_help(
-    "•─╼⃝𖠁 ɴᴏᴛᴇꜱ",
+    "notes",
     [
-        ["save [ᴛᴇxᴛ/ʀᴇᴘʟʏ]",
-            "Sᴀᴠᴇ ᴍᴇꜱꜱᴀɢᴇꜱ ᴛᴏ Gʀᴏᴜᴘꜱ. (ᴄᴀɴ ᴜꜱᴇ ꜱᴛɪᴄᴋᴇʀꜱ)"],
-        ["get [ɴᴀᴍᴀ]",
-            "Tᴀᴋᴇ ɴᴏᴛᴇ ᴛᴏ ꜱᴀᴠᴇᴅ"],
+        ["save [text/reply]",
+            "Save messages to Groups. (can use stickers)"],
+        ["get [nama]",
+            "Take note to saved"],
         ["notes",
-            "Sᴇᴇ Nᴏᴛᴇꜱ Lɪꜱᴛ"],
-        ["delnote [ɴᴀᴍᴀ]",
-            "Dᴇʟᴇᴛᴇ ᴀ ɴᴏᴛᴇ ɴᴀᴍᴇ"],
+            "See Notes List"],
+        ["delnote [nama]",
+            "Delete a note name"],
     ],
       )

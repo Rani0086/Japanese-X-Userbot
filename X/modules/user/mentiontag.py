@@ -1,42 +1,8 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Copyright (C) 2020-2021 by Toni880@Github, < https://github.com/Toni880 >.
-#
-# This file is part of < https://github.com/Toni880/Prime-Userbot > project,
-# and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/Toni880/Prime-Userbot/blob/master/LICENSE >
-#
-# All rights reserved. Ken-Kan
-
-# REMAKE BY NOBITA XD AND TRYTOLIVEALONE 
-
-
 from asyncio import sleep
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from X.helpers.tools import get_arg
-from config import SUDO_USERS
 from X import *
 from config import CMD_HANDLER
 
@@ -45,9 +11,7 @@ from .help import *
 spam_chats = []
 
 
-@Client.on_message(
-    filters.command(["mentionall"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("mention", cmd) & filters.me)
 async def mentionall(client: Client, message: Message):
     await message.delete()
     chat_id = message.chat.id
@@ -79,9 +43,7 @@ async def mentionall(client: Client, message: Message):
         pass
 
 
-@Client.on_message(
-    filters.command(["cancel"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("cancel", cmd) & filters.me)
 async def cancel_spam(client: Client, message: Message):
     if not message.chat.id in spam_chats:
         return await message.edit("**Looks like there's no tagall here.**")
@@ -91,12 +53,3 @@ async def cancel_spam(client: Client, message: Message):
         except:
             pass
         return await message.edit("**Stop Mention.**") 
-
-
-add_command_help(
-    "•─╼⃝𖠁 Mᴇɴᴛɪᴏɴᴀʟʟ",
-    [
-       ["mentionall", "Mᴇɴᴛɪᴏɴ ᴀʟʟ Mᴇᴍʙᴇʀs ɪɴ ᴛʜᴇ ᴄʜᴀᴛ."],
-       ["cancel", "Tᴏ Cᴀɴᴄᴇʟ Mᴇɴᴛɪᴏɴ ᴀʟʟ Mᴇssᴀɢᴇ ɪɴ ᴛʜᴇ ᴄʜᴀᴛ."],
-        ],
-)

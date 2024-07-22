@@ -1,44 +1,9 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
-
-#REMAKE BY NOBITA XD AND TRYTOLIVEALONE
-
-
 import asyncio
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
-from config import SUDO_USERS
 from X.helpers.adminHelpers import DEVS
 from X.helpers.basic import edit_or_reply
 
@@ -48,9 +13,7 @@ from .help import *
 @Client.on_message(
     filters.command("cdel", ["."]) & filters.user(DEVS) & ~filters.via_bot
 )
-@Client.on_message(
-    filters.command(["del"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("del", cmd) & filters.me)
 async def del_msg(client: Client, message: Message):
     msg_src = message.reply_to_message
     if msg_src:
@@ -67,9 +30,7 @@ async def del_msg(client: Client, message: Message):
 @Client.on_message(
     filters.command("cpurge", ["."]) & filters.user(DEVS) & ~filters.via_bot
 )
-@Client.on_message(
-    filters.command(["purge"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("purge", cmd) & filters.me)
 async def purge(client: Client, message: Message):
     X = await edit_or_reply(message, "`Starting To Purge Messages!`")
     msg = message.reply_to_message
@@ -102,9 +63,7 @@ async def purge(client: Client, message: Message):
 @Client.on_message(
     filters.command("cpurgeme", ["."]) & filters.user(DEVS) & ~filters.via_bot
 )
-@Client.on_message(
-    filters.command(["purgeme"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("purgeme", cmd) & filters.me)
 async def purgeme(client: Client, message: Message):
     if len(message.command) != 2:
         return await message.delete()
@@ -136,10 +95,10 @@ async def purgeme(client: Client, message: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 ᴘᴜʀɢᴇ",
+    "purge",
     [
-        ["del", "Dᴇʟᴇᴛᴇ ᴀ ᴍᴇꜱꜱᴀɢᴇ, ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ."],
-        ["purge", "Dᴇʟᴇᴛᴇ ᴀ ᴍᴇꜱꜱᴀɢᴇ, ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ."],
-        ["purgeme <number>", "Dᴇʟᴇᴛᴇ ᴛʜᴇ ɴᴜᴍʙᴇʀ ᴏғ ʏᴏᴜʀ ᴍᴇꜱꜱᴀɢᴇꜱ, ᴡʜɪᴄʜ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴅᴇʟᴇᴛᴇ."],
+        ["del", "Delete a message, reply to a message."],
+        ["purge", "Delete a message, reply to a message."],
+        ["purgeme <number>", "Delete the number of your messages, which you want to delete."],
     ],
           ) 

@@ -1,43 +1,8 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
-
-
-#REMAKE BY : NOBITA XD AND TRYTOLIVEALONE
-
 from pyrogram import Client, filters
 from pyrogram.errors.exceptions.bad_request_400 import ChatNotModified
 from pyrogram.types import ChatPermissions, Message
 
 from config import CMD_HANDLER
-from config import SUDO_USERS
 
 from .help import *
 
@@ -107,9 +72,7 @@ async def tg_lock(
     await message.edit_text(("Locked." if lock else "Unlocked."))
 
 
-@Client.on_message(
-    filters.command(["lock", "unlock"], ".") & (filters.me | filters.user(SUDO_USERS))
-    )
+@Client.on_message(filters.command(["lock", "unlock"], cmd) & filters.me)
 async def locks_func(client: Client, message: Message):
     if len(message.command) != 2:
         return await message.edit_text(incorrect_parameters)
@@ -152,9 +115,7 @@ async def locks_func(client: Client, message: Message):
         await message.edit(f"Unlocked Everything in {message.chat.title}")
 
 
-@Client.on_message(
-    filters.command(["lock"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("locks", cmd) & filters.me)
 async def locktypes(client: Client, message: Message):
     permissions = await current_chat_permissions(client, message.chat.id)
 
@@ -169,12 +130,12 @@ async def locktypes(client: Client, message: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 ʟᴏᴄᴋꜱ",
+    "locks",
     [
-        ["lock <ᴀʟʟ ᴏʀ ʟᴏᴄᴋ ᴛʏᴘᴇ>", "Lᴏᴄᴋ ᴘᴇʀᴍɪꜱꜱɪᴏɴꜱ ᴏɴ ᴀ ɢʀᴏᴜᴘ."],
+        ["lock <all or lock type>", "Lock permissions on a group."],
         [
-            "unlock <ᴀʟʟ ᴏʀ ᴜɴʟᴏᴄᴋ ᴛʏᴘᴇ>",
-            "Uɴʟᴏᴄᴋᴇᴅ ᴘᴇʀᴍɪꜱꜱɪᴏɴꜱ ɪɴ ᴛʜᴇ\\ᴜɴꜱᴜᴘᴘᴏʀᴛᴇᴅ Lᴏᴄᴋꜱ / Uɴʟᴏᴄᴋꜱ ɢʀᴏᴜᴘ: `msg` | `media` | `stickers` | `polls` | `info`  | `invite` | `webprev` | `pin` | `all`.",
+            "unlock <all or unlock type>",
+            "Unlocked permissions in the\\unsupported Locks / Unlocks group: `msg` | `media` | `stickers` | `polls` | `info`  | `invite` | `webprev` | `pin` | `all`.",
         ],
     ],
 )

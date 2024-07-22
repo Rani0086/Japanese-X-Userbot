@@ -1,31 +1,8 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
 import time
 
 from pyrogram import filters, Client
 from pyrogram.types import Message
 from X.helpers.basic import edit_or_reply
-from config import SUDO_USERS
 
 from .help import *
 
@@ -35,9 +12,7 @@ class Custom(dict):
         return 0
 
 
-@Client.on_message(
-    filters.command(["wordcount"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("wordcount", ".") & filters.me)
 async def word_count(bot: Client, message: Message):
     await message.delete()
     words = Custom()
@@ -63,12 +38,12 @@ async def word_count(bot: Client, message: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 ᴍᴇᴛʀɪᴄꜱ",
+    "metrics",
     [
         [
             ".wordcount",
-            "Fɪɴᴅꜱ ᴛʜᴇ 𝟸𝟻 ᴍᴏꜱᴛ ᴜꜱᴇᴅ ᴡᴏʀᴅꜱ ɪɴ ᴛʜᴇ ʟᴀꜱᴛ 𝟷𝟶𝟶𝟶 ᴍᴇꜱꜱᴀɢᴇꜱ ɪɴ ᴀ ɢʀᴏᴜᴘ ᴏʀ ᴘʀɪᴠᴀᴛᴇ ᴄʜᴀᴛ. Uꜱᴇ ɪɴ "
-            "ᴄʜᴀᴛ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ғɪɴᴅ ᴛʜᴇ ᴍᴇᴛʀɪᴄ ɪɴ.",
+            "Finds the 25 most used words in the last 1000 messages in a group or private chat. Use in "
+            "chat you want to find the metric in.",
         ],
     ],
 )

@@ -1,43 +1,3 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
-
-
-#REMAKE BY : NOBITA XD AND TRYTOLIVEALONE
-#DON'T KANG FUCKING COWARD
-#BSDKE KANG KIYA TOH SOCH LIYO
-#AAG LAGA DUNGA TERE ANDAR 
-#SAMJHA ? 
-
-
 import asyncio
 import os
 import time
@@ -51,8 +11,7 @@ from telegraph import exceptions, upload_file
 
 from config import BOT_VER, CHANNEL
 from config import CMD_HANDLER
-from config import SUDO_USERS
-from config import GROUP, OWNER_ID
+from config import GROUP
 from X import CMD_HELP, StartTime
 from X.helpers.basic import edit_or_reply
 from X.helpers.PyroHelpers import ReplyCheck
@@ -69,30 +28,26 @@ alive_logo = (
     gvarstatus("ALIVE_LOGO") or ""
 )
 emoji = gvarstatus("ALIVE_EMOJI") or "✧"
-alive_text = gvarstatus("ALIVE_TEKS_CUSTOM") or "✧✧ 𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄-𝐗-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 𝐈𝐒 𝐀𝐋𝐈𝐕𝐄 ✧✧"
+alive_text = gvarstatus("ALIVE_TEKS_CUSTOM") or "✧✧ 𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄-𝐗-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 𝐈𝐒 𝐀𝐋𝐈𝐕𝐄 ✧✧✨"
 
 
-@Client.on_message(
-    filters.command(["alive"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["alive", "awake"], cmd) & filters.me)
 async def alip(client: Client, message: Message):
-    X = await edit_or_reply(message, "🌸")
+    X = await edit_or_reply(message, "😝")
     await asyncio.sleep(2)
     sad = client.send_video if alive_logo.endswith(".mp4") else client.send_photo
     uptime = await get_readable_time((time.time() - StartTime))
     man = (
         f"<b>{alive_text}</b>\n\n"
-        f"<b>•─╼⃝𖠁 𝐒ʏꜱᴛᴇ𝐌 𝐒ᴛᴀᴛᴜ𝐒 </b>\n\n"
-        f"{emoji} <b>𝐌ʏ 𝐌ᴀꜱᴛᴇ𝐑:</b> [{client.me.mention}](tg://user?id={OWNER_ID}) \n\n"
-        f"{emoji} <b>𝐏ʏʀᴏɢʀᴀ𝐌 𝐕ᴇʀꜱɪᴏ𝐍:</b> <code>{versipyro}</code>\n\n"
-        f"{emoji} <b>𝐁ᴏᴛ 𝐔ᴘᴛɪᴍ𝐄:</b> <code>{uptime}</code> \n\n"
-        f"{emoji} <b>𝐕ᴇʀꜱɪᴏ𝐍:</b> <code>{BOT_VER}</code> \n\n"
-        f"{emoji} <b>𝐌ᴏᴅᴜʟᴇ𝐒:</b> <code>{len(modules)} 𝐌ᴏᴅᴜʟᴇ𝐒</code> \n\n"
-        f"{emoji} <b>𝐏ʏᴛʜᴏ𝐍 𝐕ᴇʀꜱɪᴏ𝐍:</b> <code>{python_version()}</code> \n\n"
-        f"{emoji} <b>𝐆ʀᴏᴜ𝐏 :</b> [𝐒ᴜᴘᴘᴏʀ𝐓](https://t.me/Japanese_Userbot_Support)** \n\n"
-        f"{emoji} <b>𝐂ʜᴀɴɴᴇʟ:<b> [𝐔ᴘᴅᴀᴛᴇ𝐒](https://t.me/Japanese_Userbot)** \n\n"
-        f"{emoji} <b>[𝐃ᴇᴘʟᴏʏ](http://dashboard.heroku.com/new?template=https://github.com/Team-Japanese/Japanese-X-Userbot) 𝐘ᴏᴜʀ 𝐎ᴡɴ [𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄-𝐗-𝐔𝐒𝐄𝐑𝐁𝐎𝐓](http://github.com/Team-Japanese/Japanese-X-Userbot) ✧\n\n"
-        
+        f"{emoji} <b>𝙼𝚈 𝙼𝙰𝚂𝚃𝙴𝚁:</b> {client.me.mention} \n"
+        f"{emoji} <b>𝙼𝙾𝙳𝚄𝙻𝙴𝚂:</b> <code>{len(modules)} Modules</code> \n"
+        f"{emoji} <b>𝚅𝙴𝚁𝚂𝙸𝙾𝙽:</b> <code>{BOT_VER}</code> \n"
+        f"{emoji} <b>𝙿𝚈𝚃𝙷𝙾𝙽 𝚅𝙴𝚁𝚂𝙸𝙾𝙽:</b> <code>{python_version()}</code> \n"
+        f"{emoji} <b>𝙿𝚈𝚁𝙾𝙶𝚁𝙰𝙼 𝚅𝙴𝚁𝚂𝙸𝙾𝙽:</b> <code>{versipyro}</code> \n"
+        f"{emoji} <b>𝙱𝙾𝚃 𝚄𝙿𝚃𝙸𝙼𝙴:</b> <code>{uptime}</code> \n\n"
+        f"{emoji}✧[𝙶𝚁𝙾𝚄𝙿](https://t.me/Japanese_Userbot_Chat)** \n" 
+        f"{emoji}✧[𝙲𝙷𝙰𝙽𝙽𝙴𝙻](https://t.me/Japanese_Userbot)** \n"
+        f"{emoji}✧[𝙾𝚆𝙽𝙴𝚁](tg://user?id=6694740726)** \n"
     )
     try:
       await sad(
@@ -106,9 +61,7 @@ async def alip(client: Client, message: Message):
       await X.edit(man, disable_web_page_preview=True)
 
 
-@Client.on_message(
-    filters.command(["setalivepic"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("setalivelogo", cmd) & filters.me)
 async def setalivelogo(client: Client, message: Message):
     try:
         import X.helpers.SQL.globals as sql
@@ -145,9 +98,7 @@ async def setalivelogo(client: Client, message: Message):
     restart()
 
 
-@Client.on_message(
-    filters.command(["setalivetext"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("setalivetext", cmd) & filters.me)
 async def setalivetext(client: Client, message: Message):
     try:
         import X.helpers.SQL.globals as sql
@@ -174,9 +125,7 @@ async def setalivetext(client: Client, message: Message):
     restart()
 
 
-@Client.on_message(
-    filters.command(["setaliveemoji"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("setemoji", cmd) & filters.me)
 async def setemoji(client: Client, message: Message):
     try:
         import X.helpers.SQL.globals as sql
@@ -197,15 +146,3 @@ async def setemoji(client: Client, message: Message):
     sql.addgvar("ALIVE_EMOJI", emoji)
     await X.edit(f"**Successfully Customize ALIVE EMOJI Becomes** {emoji}")
     restart()
-
-
-
-add_command_help(
-    "•─╼⃝𖠁 Aʟɪᴠᴇ",
-    [
-       ["alive", "Send alive text."],
-       ["setalivepic", "To set alive pic."],
-       ["setalivetext", "To set alive text."],
-       ["setaliveemoji", "To set alive emoji."],
-    ],
-)

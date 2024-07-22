@@ -1,54 +1,15 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
-
-
-#REMAKE BY : NOBITA XD AND TRYTOLIVEALONE
-
-
-
 import html
 
 from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
-from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 from X.helpers.parser import mention_html, mention_markdown
 from .help import *
 
 
-@Client.on_message(
-    filters.command(["admins"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.me & filters.command(["admins", "adminlist"], cmd))
 async def adminlist(client: Client, message: Message):
     replyid = None
     toolong = False
@@ -70,7 +31,7 @@ async def adminlist(client: Client, message: Message):
             name = a.user.first_name + " " + a.user.last_name
         except:
             name = a.user.first_name
-        if name is None:
+        if nama is None:
             name = "☠️ 𝐃𝐞𝐥𝐞𝐭𝐞𝐝 𝐚𝐜𝐜𝐨𝐮𝐧𝐭"
         if a.status == enums.ChatMemberStatus.ADMINISTRATOR:
             if a.user.is_bot:
@@ -111,9 +72,7 @@ async def adminlist(client: Client, message: Message):
         await message.edit(teks)
 
 
-@Client.on_message(
-    filters.command(["zombies"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["kickdel", "zombies"], cmd) & filters.me)
 async def kickdel_cmd(client: Client, message: Message):
     Man = await edit_or_reply(message, "<b>𝐊𝐢𝐜𝐤𝐢𝐧𝐠 𝐝𝐞𝐥𝐞𝐭𝐞𝐝 𝐚𝐜𝐜𝐨𝐮𝐧𝐭𝐬...</b>")
     # noinspection PyTypeChecker
@@ -126,7 +85,7 @@ async def kickdel_cmd(client: Client, message: Message):
 
 
 @Client.on_message(
-    filters.command(["report"], ".") & (filters.me | filters.user(SUDO_USERS))
+    filters.me & filters.command(["reportadmin", "reportadmins", "report"], cmd)
 )
 async def report_admin(client: Client, message: Message):
     await message.delete()
@@ -174,15 +133,13 @@ async def report_admin(client: Client, message: Message):
         )
 
 
-@Client.on_message(
-    filters.command(["tagall"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.me & filters.command(["everyone", "tagall"], cmd))
 async def tag_all_users(client: Client, message: Message):
     await message.delete()
     if len(message.text.split()) >= 2:
         text = message.text.split(None, 1)[1]
     else:
-        text = "𝐇𝐞𝐥𝐥𝐨 𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄 𝐒𝐀𝐌𝐔𝐑𝐀𝐈'𝐒 😊"
+        text = "𝐇𝐢 𝐚𝐥𝐥 😊"
     kek = client.get_chat_members(message.chat.id)
     async for a in kek:
         if not a.user.is_bot:
@@ -200,9 +157,7 @@ async def tag_all_users(client: Client, message: Message):
         )
 
 
-@Client.on_message(
-    filters.command(["bots"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.me & filters.command(["botlist", "bots"], cmd))
 async def get_list_bots(client: Client, message: Message):
     replyid = None
     if len(message.text.split()) >= 2:
@@ -223,7 +178,7 @@ async def get_list_bots(client: Client, message: Message):
         if name is None:
             name = "☠️ 𝐃𝐞𝐥𝐞𝐭𝐞𝐝 𝐚𝐜𝐜𝐨𝐮𝐧𝐭"
         if a.user.is_bot:
-            bots.append(mention_markdown(a.user.id, name))
+            bots.append(mention_markdown(a.user.id, nama))
     teks = "**𝐀𝐥𝐥 𝐛𝐨𝐭𝐬 𝐢𝐧 𝐠𝐫𝐨𝐮𝐩 {}**\n".format(grup.title)
     teks += "╒═══「 𝐁𝐨𝐭𝐬 」\n"
     for x in bots:
@@ -236,17 +191,17 @@ async def get_list_bots(client: Client, message: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 ᴛᴀɢ",
+    "tag",
     [
-        [f"{cmd}admins", "Gᴇᴛ Cʜᴀᴛꜱ ᴀᴅᴍɪɴ ʟɪꜱᴛ ."],
-        [f"{cmd}zombies", "Tᴏ ᴋɪᴄᴋ ᴅᴇʟᴇᴛᴇᴅ Aᴄᴄᴏᴜɴᴛ ."],
+        [f"{cmd}admins", "𝐆𝐞𝐭 𝐜𝐡𝐚𝐭𝐬 𝐀𝐝𝐦𝐢𝐧𝐬 𝐥𝐢𝐬𝐭."],
+        [f"{cmd}kickdel", "𝐓𝐨 𝐊𝐢𝐜𝐤 𝐝𝐞𝐥𝐞𝐭𝐞𝐝 𝐀𝐜𝐜𝐨𝐮𝐧𝐭𝐬."],
         [
             f"{cmd}everyone `or` {cmd}tagall",
-            "Tᴏ ᴍᴇɴᴛɪᴏɴ ᴇᴠᴇʀʏᴏɴᴇ",
+            "𝐭𝐨 𝐦𝐞𝐧𝐭𝐢𝐨𝐧 𝐄𝐯𝐞𝐫𝐲𝐨𝐧𝐞 ",
         ],
         [
-            f"{cmd}bots",
-            "ᴛᴏ ɢᴇᴛ ᴄʜᴀᴛꜱ ʙᴏᴛ ʟɪꜱᴛ",
+            f"{cmd}botlist",
+            "𝐓𝐨 𝐠𝐞𝐭 𝐂𝐡𝐚𝐭𝐬 𝐁𝐨𝐭𝐬 𝐥𝐢𝐬𝐭",
         ],
     ],
 ) 

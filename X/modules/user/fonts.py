@@ -1,37 +1,7 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credit 
-# @Rizzvbss | @Whynan
-# How come?
-# © @KynanSupport
-# REMAKE BY NOBITA XD AND TRYTOLIVEALONE
-
-
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from X import *
 from config import CMD_HANDLER
-from config import SUDO_USERS
 from X.helpers.tools import get_arg
 
 from .help import *
@@ -77,9 +47,7 @@ def gen_font(text, new_font):
             text = text.replace(q, new)
     return text
 
-@Client.on_message(
-    filters.command(["font"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.me & filters.command(["font"], cmd))
 async def font_ubot(client: Client, message: Message):
     if message.reply_to_message or get_arg(message):
         font = get_arg(message)
@@ -107,9 +75,7 @@ async def font_ubot(client: Client, message: Message):
         return await message.reply("Reply Text And Fill In Font Name!!!")
 
 
-@Client.on_message(
-    filters.command(["lf", "listfont"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.me & filters.command(["lf", "listfont"], cmd))
 async def fonts(client: Client, message: Message):
     await message.reply(
         "<b>ᴅᴀғᴛᴀʀ ғᴏɴᴛs</b>\n\n"
@@ -125,9 +91,9 @@ async def fonts(client: Client, message: Message):
 
 
 add_command_help(
-    "─╼⃝𖠁 Fᴏɴᴛꜱ",
+    "fonts",
     [
-        [f"font [ʀᴇᴘʟʏ ᴛᴏ ᴍᴇꜱꜱᴀɢᴇ]", "Cʀᴇᴀᴛᴇ ᴛᴇxᴛ ᴡɪᴛʜ ᴅɪғғᴇʀᴇɴᴛ ғᴏɴᴛ ꜱᴛʏʟᴇꜱ"],
-        [f"lf", "Vɪᴇᴡ ᴛʜᴇ Fᴏɴᴛꜱ Lɪꜱᴛ."],
+        [f"font [reply to message]", "Create text with different font styles"],
+        [f"lf", "View the Fonts List."],
     ],
 ) 

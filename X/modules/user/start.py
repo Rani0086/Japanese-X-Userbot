@@ -1,42 +1,8 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
-
-#REMAKE BY NOBITA XD AND TRYTOLIVEALONE
-
-
 from datetime import datetime
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from config import SUDO_USERS
+
 from config import CMD_HANDLER
 from config import *
 from X import *
@@ -56,69 +22,59 @@ absen = [
 ]
 
 
-@Client.on_message(
-    filters.command(["Tod"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("Tod", [""]) & filters.user(DEVS) & ~filters.me)
 async def tod(_, message: Message):
    await message.reply("**You bastard is a bitch!😏**")
 
 
-@Client.on_message(
-    filters.command(["adel"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("adel", [""]) & filters.user(DEVS) & ~filters.me)
 async def sheril(_, message: Message):
    await message.reply("**OSHIII I FEEL IT😡**")
 
 
-@Client.on_message(
-    filters.command(["Absen"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("Absen", [""]) & filters.user(DEVS) & ~filters.me)
 async def absen(_, message: Message):
     await message.reply("**Present Japanese Sayanggg🥵**")
     
-@Client.on_message(
-    filters.command(["Sayang"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+    
+@Client.on_message(filters.command("Sayang", [""]) & filters.user(DEVS) & ~filters.me)
 async def sayang(_, message: Message):
     await message.reply("**Yes dear, why??🥰**")
 
 
-@Client.on_message(
-    filters.command(["Bub"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("Bub", [""]) & filters.user(DEVS) & ~filters.me)
 async def bub(_, message: Message):
     await message.reply("**CHAPTER BUB CHAPTER BUB I AM GUY'S BOYFRIEND LOO😡**")
 
 
-@Client.on_message(
-    filters.command(["Sun"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("Sun", [""]) & filters.user(DEVS) & ~filters.me)
 async def tod(_, message: Message):
     await message.reply("**MMMWWWAAAHHHHHH😚**")
 
-@Client.on_message(
-    filters.command(["tes"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+
+@Client.on_message(filters.command("Dareen", [""]) & filters.user(DEVS) & ~filters.me)
+async def aloo(_, message: Message):
+    await message.reply("**EEUUNNGGHH AAHH AAHH YAMETEH🤤**")
+
+
+@Client.on_message(filters.command("tes", [""]) & filters.user(DEVS))
 async def tes(client, message: Message):
     await client.send_reaction(message.chat.id, message.id, "🗿")
 
-@Client.on_message(
-    filters.command(["repo"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+
+@Client.on_message(filters.command("repo", cmd) & filters.me)
 async def repo(client: Client, message: Message):
     await edit_or_reply(
         message, First.REPO.format(BOT_VER), disable_web_page_preview=True
     )
 
-@Client.on_message(
-    filters.command(["creator"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+
+@Client.on_message(filters.command("creator", cmd) & filters.me)
 async def creator(client: Client, message: Message):
     await edit_or_reply(message, First.CREATOR)
 
-@Client.on_message(
-    filters.command(["uptime"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+
+@Client.on_message(filters.command(["uptime", "up"], cmd) & filters.me)
 async def uptime(client: Client, message: Message):
     now = datetime.now()
     current_uptime = now - START_TIME
@@ -126,9 +82,8 @@ async def uptime(client: Client, message: Message):
         message, f"Current Uptime\n" f"```{str(current_uptime).split('.')[0]}```"
     )
 
-@Client.on_message(
-    filters.command(["id"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+
+@Client.on_message(filters.command("id", cmd) & filters.me)
 async def get_id(client: Client, message: Message):
     file_id = None
     user_id = None
@@ -219,12 +174,12 @@ async def get_id(client: Client, message: Message):
 
 # Command help section
 add_command_help(
-    "•─╼⃝𖠁 ꜱᴛᴀʀᴛ",
+    "start",
     [
-        ["alive", "Cʜᴇᴄᴋ ɪғ ᴛʜᴇ ʙᴏᴛ ɪꜱ ᴀʟɪᴠᴇ ᴏʀ ɴᴏᴛ."],
-        ["repo", "Dɪꜱᴘʟᴀʏ ᴛʜᴇ ʀᴇᴘᴏ ᴏғ ᴛʜɪꜱ ᴜꜱᴇʀʙᴏᴛ."],
-        ["creator", "Sʜᴏᴡ ᴛʜᴇ ᴄʀᴇᴀᴛᴏʀ ᴏғ ᴛʜɪꜱ ᴜꜱᴇʀʙᴏᴛ."],
-        ["id", "Sᴇɴᴅ ɪᴅ ᴏғ ᴡʜᴀᴛ ʏᴏᴜ ʀᴇᴘʟɪᴇᴅ ᴛᴏ."],
-        [f"up `or` {cmd}uptime", "Cʜᴇᴄᴋ ʙᴏᴛ'ꜱ ᴄᴜʀʀᴇɴᴛ ᴜᴘᴛɪᴍᴇ."],
+        ["alive", "Check if the bot is alive or not."],
+        ["repo", "Display the repo of this userbot."],
+        ["creator", "Show the creator of this userbot."],
+        ["id", "Send id of what you replied to."],
+        [f"up `or` {cmd}uptime", "Check bot's current uptime."],
     ],
 ) 

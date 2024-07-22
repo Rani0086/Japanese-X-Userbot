@@ -1,39 +1,3 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
-
-
-#REMAKE BY : NOBITA XD AND TRYTOLIVEALONE
-
-
-
 from asyncio import sleep
 
 from pyrogram import Client, enums, filters
@@ -41,7 +5,6 @@ from pyrogram.raw import functions
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
-from config import SUDO_USERS
 from X.helpers.PyroHelpers import ReplyCheck
 
 from .help import *
@@ -62,9 +25,7 @@ commands = {
 }
 
 
-@Client.on_message(
-    filters.command(list(commands), ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(list(commands), cmd) & filters.me)
 async def fakeactions_handler(client: Client, message: Message):
     cmd = message.command[0]
     try:
@@ -103,46 +64,46 @@ async def fakeactions_handler(client: Client, message: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 ғᴀᴋᴇᴀᴄᴛɪᴏɴ",
+    "fakeaction",
     [
-        ["ftyping [detik]", "Sʜᴏᴡꜱ Fᴀᴋᴇ Tʏᴘɪɴɢ ɪɴ ᴄʜᴀᴛ."],
-        ["fgame [detik]", "Sʜᴏᴡꜱ ᴘʟᴀʏɪɴɢ ᴀ Fᴀᴋᴇ ɢᴀᴍᴇ ɪɴ ᴄʜᴀᴛ."],
+        ["ftyping [detik]", "Shows Fake Typing in chat."],
+        ["fgame [detik]", "Shows playing a Fake game in chat."],
         [
             "faudio [detik]",
-            "Sʜᴏᴡꜱ ᴛʜᴇ ᴀᴄᴛɪᴏɴ ᴏғ ʀᴇᴄᴏʀᴅɪɴɢ ᴀ ғᴀᴋᴇ ᴠᴏɪᴄᴇ ɪɴ ᴄʜᴀᴛ.",
+            "Shows the action of recording a fake voice in chat.",
         ],
         [
             "fvideo [detik]",
-            "Sʜᴏᴡꜱ ᴛʜᴇ ᴀᴄᴛɪᴏɴ ᴏғ ʀᴇᴄᴏʀᴅɪɴɢ ᴀ ғᴀᴋᴇ ᴠɪᴅᴇᴏ ɪɴ ᴄʜᴀᴛ.",
+            "Shows the action of recording a fake video in chat.",
         ],
         [
             "fround [detik]",
-            "Sʜᴏᴡꜱ ᴛʜᴇ ᴀᴄᴛɪᴏɴ ᴏғ ʀᴇᴄᴏʀᴅɪɴɢ ᴀ ғᴀᴋᴇ ᴠɪᴅᴇᴏ ɪɴ ᴄʜᴀᴛ.",
+            "Shows the action of recording a fake video in chat.",
         ],
         [
             "fphoto [detik]",
-            "Sʜᴏᴡꜱ ᴛʜᴇ ᴀᴄᴛɪᴏɴ ᴏғ ꜱᴇɴᴅɪɴɢ ғᴀᴋᴇ ᴘʜᴏᴛᴏꜱ ɪɴ ᴄʜᴀᴛ.",
+            "Shows the action of sending fake photos in chat.",
         ],
         [
             "fsticker [detik]",
-            "Dɪꜱᴘʟᴀʏꜱ ᴛʜᴇ ᴀᴄᴛɪᴏɴ ᴏғ ꜱᴇʟᴇᴄᴛɪɴɢ ғᴀᴋᴇ ꜱᴛɪᴄᴋᴇʀꜱ ɪɴ ᴄʜᴀᴛ.",
+            "Displays the action of selecting fake stickers in chat.",
         ],
         [
             "fcontact [detik]",
-            "Dɪꜱᴘʟᴀʏꜱ ᴀ ғᴀᴋᴇ Sʜᴀʀᴇ Cᴏɴᴛᴀᴄᴛ ᴀᴄᴛɪᴏɴ ɪɴ ᴄʜᴀᴛ.",
+            "Displays a fake Share Contact action in chat.",
         ],
         [
             "flocation [detik]",
-            "Dɪꜱᴘʟᴀʏꜱ ᴀ ғᴀᴋᴇ Sʜᴀʀᴇ Lᴏᴄᴀᴛɪᴏɴ ᴀᴄᴛɪᴏɴ ɪɴ ᴄʜᴀᴛ.",
+            "Displays a fake Share Location action in chat.",
         ],
         [
             "fdocument [detik]",
-            "Dɪꜱᴘʟᴀʏꜱ ᴛʜᴇ ᴀᴄᴛɪᴏɴ ᴏғ ꜱᴇɴᴅɪɴɢ ғᴀᴋᴇ ᴅᴏᴄᴜᴍᴇɴᴛꜱ/ғɪʟᴇꜱ ɪɴ ᴄʜᴀᴛ.",
+            "Displays the action of sending fake documents/files in chat.",
         ],
         [
             "fscreen [jumlah]",
-            "Dɪꜱᴘʟᴀʏꜱ ᴀ ғᴀᴋᴇ ꜱᴄʀᴇᴇɴꜱʜᴏᴛ ᴀᴄᴛɪᴏɴ. (Uꜱᴇ ɪɴ Pʀɪᴠᴀᴛᴇ Cʜᴀᴛ).",
+            "Displays a fake screenshot action. (Use in Private Chat).",
         ],
-        ["fstop", "Sᴛᴏᴘꜱ ғᴀᴋᴇ ᴀᴄᴛɪᴏɴꜱ ɪɴ ᴄʜᴀᴛ."],
+        ["fstop", "Stops fake actions in chat."],
     ],
 ) 

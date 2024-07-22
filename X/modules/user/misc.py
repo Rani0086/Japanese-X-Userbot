@@ -1,38 +1,3 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
-
-#REMAKE BY NOBITA XD AND TRYTOLIVEALONE 
-
-
-
 import asyncio
 import os
 
@@ -45,45 +10,11 @@ from X.helpers.basic import edit_or_reply
 from X.helpers.PyroHelpers import ReplyCheck
 from X.helpers.tools import get_arg
 from X.utils import s_paste
-from config import SUDO_USERS
 
 from .help import *
 
-import requests
 
-@Client.on_message(
-    filters.command(["webshot"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
-async def webshot(client: Client, message):
-    Man = await message.edit("`Processing...`")
-    try:
-        user_link = message.command[1]
-        try:
-            full_link = f"https://image.thum.io/get/fullpage/{user_link}?delay=5000"
-            response = requests.get(full_link)
-            response.raise_for_status()  
-            ss = response.content
-
-            
-            with open("temp_image.jpg", "wb") as f:
-                f.write(ss)
-
-            
-            await client.send_photo(
-                message.chat.id,
-                "temp_image.jpg",
-                caption=f"**Screenshot of the page ⟶** {user_link}",
-            )
-
-            await Man.delete()
-        except Exception as dontload:
-            await Man.edit(f"Error! {dontload}")
-    except Exception as error:
-        await Man.edit(f"**Something went wrong\nLog:{error}...**")
-
-@Client.on_message(
-    filters.command(["limit"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("limit", cmd) & filters.me)
 async def spamban(client: Client, m: Message):
     await client.unblock_user("SpamBot")
     response = await client.send(
@@ -100,9 +31,36 @@ async def spamban(client: Client, m: Message):
     status = await client.get_messages(chat_id="SpamBot", message_ids=spambot_msg)
     await wait_msg.edit_text(f"~ {status.text}")
 
-@Client.on_message(
-    filters.command(["type"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+
+@Client.on_message(filters.command(["webshot", "ss"], cmd) & filters.me)
+async def webshot(client: Client, message: Message):
+    Man = await edit_or_reply(message, "`Processing...`")
+    try:
+        user_link = message.command[1]
+        try:
+            full_link = f"https://webshot.deam.io/{user_link}/?width=1920&height=1080?delay=2000?type=png"
+            await client.send_photo(
+                message.chat.id,
+                full_link,
+                caption=f"**Screenshot of the page ⟶** {user_link}",
+            )
+        except Exception as dontload:
+            await message.edit(f"Error! {dontload}\nTrying again create screenshot...")
+            full_link = f"https://mini.s-shot.ru/1920x1080/JPEG/1024/Z100/?{user_link}"
+            await client.send_photo(
+                message.chat.id,
+                full_link,
+                caption=f"**Screenshot of the page ⟶** {user_link}",
+            )
+        await Man.delete()
+    except Exception as error:
+        await Man.delete()
+        await client.send_message(
+            message.chat.id, f"**Something went wrong\nLog:{error}...**"
+        )
+
+
+@Client.on_message(filters.command("type", cmd) & filters.me)
 async def types(client: Client, message: Message):
     orig_text = message.text.split(prefix + "type ", maxsplit=1)[1]
     text = orig_text
@@ -117,9 +75,7 @@ async def types(client: Client, message: Message):
         await asyncio.sleep(0.10)
 
 
-@Client.on_message(
-    filters.command(["dm"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["directmessage", "dm"], cmd) & filters.me)
 async def dm(client: Client, message: Message):
     X = await edit_or_reply(message, "` Proccessing.....`")
     quantity = 1
@@ -142,9 +98,7 @@ async def dm(client: Client, message: Message):
         await X.edit("Message Sended Successfully !")
         await asyncio.sleep(0.15)
 
-@Client.on_message(
-    filters.command(["duck"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("duck", cmd) & filters.me)
 async def duckgo(client: Client, message: Message):
     input_str = " ".join(message.command[1:])
     Man = await edit_or_reply(message, "`Processing...`")
@@ -158,9 +112,7 @@ async def duckgo(client: Client, message: Message):
         await Man.edit_text("something is wrong. please try again later.")
 
 
-@Client.on_message(
-    filters.command(["open"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("open", cmd) & filters.me)
 async def open_file(client: Client, m: Message):
     xd = await edit_or_reply(m, "`Reading File!`")
     f = await client.download_media(m.reply_to_message)
@@ -183,9 +135,7 @@ async def open_file(client: Client, m: Message):
         os.remove(f)
 
 
-@Client.on_message(
-    filters.command(["tt", "tiktok", "ig", "sosmed"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["tt", "tiktok", "ig", "sosmed"], cmd) & filters.me)
 async def sosmed(client: Client, message: Message):
     Man = await message.edit("`Processing Please Wait My Master✨ Give me only 5-10 Seconds Done Now Go to @MultiSaverXbot . . .`")
     link = get_arg(message)
@@ -216,39 +166,39 @@ async def sosmed(client: Client, message: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 ᴍɪꜱᴄ",
+    "misc",
     [
-        ["limit", "Cʜᴇᴄᴋ Lɪᴍɪᴛ ᴛᴇʟᴇɢʀᴀᴍ ғʀᴏᴍ @SpamBot."],
+        ["limit", "Check Limit telegram from @SpamBot."],
         [
-            "dm <ᴜꜱᴇʀɴᴀᴍᴇ> <ᴛᴇxᴛ>",
-            "Tᴏ ꜱᴇɴᴅ ᴄʜᴀᴛ ᴜꜱɪɴɢ ᴜꜱᴇʀʙᴏᴛ.",
+            "dm <username> <text>",
+            "To send chat using userbot.",
         ],
-        ["duck", "Tᴏ ɢᴇᴛ ᴀ ʟɪɴᴋ ғʀᴏᴍ DᴜᴄᴋDᴜᴄᴋGᴏ."],
+        ["duck", "To get a link from DuckDuckGo."],
         [
             "open",
-            "Tᴏ ᴠɪᴇᴡ ᴛʜᴇ ᴄᴏɴᴛᴇɴᴛꜱ ᴏғ ᴛʜᴇ ғɪʟᴇ ɪɴᴛᴏ ᴛᴇxᴛ ᴛʜᴀᴛ ɪꜱ ꜱᴇɴᴛ ᴀꜱ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴇʟᴇɢʀᴀᴍ.",
+            "To view the contents of the file into text that is sent as a message telegram.",
         ],
     ],
 )
 
 
 add_command_help(
-    "•─╼⃝𖠁 ᴡᴇʙꜱʜᴏᴛ",
+    "webshot",
     [
         [
-            f"webshot <ʟɪɴᴋ> ᴏʀ {cmd}ꜱꜱ <ʟɪɴᴋ>",
-            "Tᴏ ꜱᴄʀᴇᴇɴꜱʜᴏᴛ ᴀ ɢɪᴠᴇɴ ᴡᴇʙ ᴘᴀɢᴇ.",
+            f"webshot <link> `or` {cmd}ss <link>",
+            "To screenshot a given web page.",
         ],
     ],
 )
 
 
 add_command_help(
-    "•─╼⃝𖠁 ꜱᴏꜱᴍᴇᴅ",
+    "sosmed",
     [
         [
-            f"sosmed <ʟɪɴᴋ>",
-            "Tᴏ Dᴏᴡɴʟᴏᴀᴅ Mᴇᴅɪᴀ Fʀᴏᴍ Fᴀᴄᴇʙᴏᴏᴋ / Tɪᴋᴛᴏᴋ / Iɴꜱᴛᴀɢʀᴀᴍ / Tᴡɪᴛᴛᴇʀ / YᴏᴜTᴜʙᴇ.",
+            f"sosmed <link>",
+            "To Download Media From Facebook / Tiktok / Instagram / Twitter / YouTube.",
         ],
     ],
   ) 

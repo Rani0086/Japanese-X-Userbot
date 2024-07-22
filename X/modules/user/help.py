@@ -1,45 +1,8 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
-
-#REMAKE BY NOBITA XD AND TRYTOLIVEALONE 
-
-
-
-
 import asyncio
 
 from prettytable import PrettyTable
 from pyrogram import Client, enums, filters
 from pyrogram.types import Message
-from config import SUDO_USERS
 
 from X import app, CMD_HELP
 from X.helpers.cmd import *
@@ -55,9 +18,7 @@ async def edit_or_reply(message: Message, *args, **kwargs) -> Message:
     )
     return await xyz(*args, **kwargs)
 
-@Client.on_message(
-    filters.command(["help", "helpme"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["help", "helpme"], cmd) & filters.me)
 async def module_help(client: Client, message: Message):
     cmd = message.command
     help_arg = ""
@@ -83,7 +44,7 @@ async def module_help(client: Client, message: Message):
                 ac.add_row([x[0], x[1] if len(x) >= 2 else None])
             xx = await client.send_message(
                 message.chat.id,
-                f"```{str(ac)}```\n• Mᴏᴅᴜʟᴇꜱ Pʀᴏᴠɪᴅᴇᴅ Bʏ 𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄-𝐗-𝐔𝐒𝐄𝐑𝐁𝐎𝐓•",
+                f"```{str(ac)}```\n• @Japanese_Userbot_Chat × @Nobitaa_xd•",
                 reply_to_message_id=ReplyCheck(message),
             )
             await xx.reply(
@@ -97,7 +58,7 @@ async def module_help(client: Client, message: Message):
             this_command = f"──「 **Help For {str(help_arg).upper()}** 」──\n\n"
             for x in commands:
                 this_command += f"  •  **Command:** `.{str(x)}`\n  •  **Function:** `{str(commands[x])}`\n\n"
-            this_command += "Mᴏᴅᴜʟᴇꜱ Pʀᴏᴠɪᴅᴇᴅ Bʏ 𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄-𝐗-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 "
+            this_command += "© @Nobitaa_xd"
             await edit_or_reply(
                 message, this_command, parse_mode=enums.ParseMode.MARKDOWN
             )
@@ -108,9 +69,7 @@ async def module_help(client: Client, message: Message):
             )
 
 
-@Client.on_message(
-    filters.command(["plugins", "modules"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["plugins", "modules"], cmd) & filters.me)
 async def module_helper(client: Client, message: Message):
     cmd = message.command
     help_arg = ""
@@ -126,7 +85,7 @@ async def module_helper(client: Client, message: Message):
         for x in split_list(sorted(CMD_HELP.keys()), 2):
             ac.add_row([x[0], x[1] if len(x) >= 2 else None])
         await edit_or_reply(
-            message, f"```{str(ac)}```\n• @Japanese_Userbot_Support × Mᴏᴅᴜʟᴇꜱ Pʀᴏᴠɪᴅᴇᴅ Bʏ 𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄-𝐗-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 •"
+            message, f"```{str(ac)}```\n• @Japanese_Userbot_Chat × @Nobitaa_xd •"
         )
         await message.reply(
             f"**Usage**:`.help broadcast` **To View Module details**"
@@ -138,7 +97,7 @@ async def module_helper(client: Client, message: Message):
             this_command = f"──「 **Help For {str(help_arg).upper()}** 」──\n\n"
             for x in commands:
                 this_command += f"  •  **Command:** `.{str(x)}`\n  •  **Function:** `{str(commands[x])}`\n\n"
-            this_command += "Mᴏᴅᴜʟᴇꜱ Pʀᴏᴠɪᴅᴇᴅ Bʏ 𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄-𝐗-𝐔𝐒𝐄𝐑𝐁𝐎𝐓"
+            this_command += "© @Nobitaa_xd"
             await edit_or_reply(
                 message, this_command, parse_mode=enums.ParseMode.MARKDOWN
             )

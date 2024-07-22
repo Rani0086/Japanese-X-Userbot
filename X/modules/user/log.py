@@ -1,47 +1,9 @@
-#MIT License
-
-#Copyright (c) 2024 Japanese-X-Userbot
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
-#furnished to do so, subject to the following conditions:
-
-#The above copyright notice and this permission notice shall be included in all
-#copies or substantial portions of the Software.
-
-#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-#SOFTWARE.
-
-# Credits: @mrismanaziz
-# Copyright (C) 2022 Pyro-ManUserbot
-#
-# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
-#
-# t.me/SharingUserbot & t.me/Lunatic0de
-
-
-#REMAKE BY : NOBITA XD AND TRYTOLIVEALONE
-
-
-
-
 import asyncio
 
 from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
-from config import SUDO_USERS
 from X import BOTLOG_CHATID
 from X.helpers.basic import edit_or_reply
 from X.helpers.SQL import no_log_pms_sql
@@ -114,9 +76,7 @@ async def log_tagged_messages(client: Client, message: Message):
     )
 
 
-@Client.on_message(
-    filters.command(["log"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("log", cmd) & filters.me)
 async def set_log_p_m(client: Client, message: Message):
     if BOTLOG_CHATID != -100:
         if no_log_pms_sql.is_approved(message.chat.id):
@@ -124,9 +84,7 @@ async def set_log_p_m(client: Client, message: Message):
             await message.edit("**LOG Chat of this Group Successfully Activated**")
 
 
-@Client.on_message(
-    filters.command(["nolog"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command("nolog", cmd) & filters.me)
 async def set_no_log_p_m(client: Client, message: Message):
     if BOTLOG_CHATID != -100:
         if not no_log_pms_sql.is_approved(message.chat.id):
@@ -134,9 +92,7 @@ async def set_no_log_p_m(client: Client, message: Message):
             await message.edit("**LOG Chat of this Group Successfully Disabled**")
 
 
-@Client.on_message(
-    filters.command(["pmlog"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["pmlog", "pmlogger"], cmd) & filters.me)
 async def set_pmlog(client: Client, message: Message):
     if BOTLOG_CHATID == -100:
         return await message.edit(
@@ -153,7 +109,7 @@ async def set_pmlog(client: Client, message: Message):
         PMLOG = True
     if PMLOG:
         if h_type:
-            await edit_or_reply(message, "**PM LOG Activated**")
+            await edit_or_reply(message, "**PM LOG Sudah Activated**")
         else:
             addgvar("PMLOG", h_type)
             await edit_or_reply(message, "**PM LOG Shutdown Successfully**")
@@ -164,9 +120,7 @@ async def set_pmlog(client: Client, message: Message):
         await edit_or_reply(message, "**PM LOG It's Turned Off**")
 
 
-@Client.on_message(
-    filters.command(["grouplog"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["gruplog", "grouplog", "gclog"], cmd) & filters.me)
 async def set_gruplog(client: Client, message: Message):
     if BOTLOG_CHATID == -100:
         return await message.edit(
@@ -195,23 +149,23 @@ async def set_gruplog(client: Client, message: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 ʟᴏɢ",
+    "log",
     [
         [
             "log",
-            "Tᴏ ᴇɴᴀʙʟᴇ Cʜᴀᴛ Lᴏɢ ғʀᴏᴍ ᴛʜᴀᴛ ᴄʜᴀᴛ/ɢʀᴏᴜᴘ.",
+            "To enable Chat Log from that chat/group.",
         ],
         [
             "nolog",
-            "Tᴏ ᴅɪꜱᴀʙʟᴇ Cʜᴀᴛ Lᴏɢꜱ ғʀᴏᴍ ᴛʜᴀᴛ ᴄʜᴀᴛ/ɢʀᴏᴜᴘ.",
+            "To disable Chat Logs from that chat/group.",
         ],
         [
-            "pmlog ᴏɴ/ᴏғғ",
-            "Tᴏ ᴇɴᴀʙʟᴇ ᴏʀ ᴅɪꜱᴀʙʟᴇ ᴘʀɪᴠᴀᴛᴇ ᴍᴇꜱꜱᴀɢᴇ ʟᴏɢꜱ ᴛʜᴀᴛ ᴡɪʟʟ ʙᴇ ғᴏʀᴡᴀʀᴅᴇᴅ ᴛᴏ ᴛʜᴇ ʟᴏɢ ɢʀᴏᴜᴘ.",
+            "pmlog on/off",
+            "To enable or disable private message logs that will be forwarded to the log group.",
         ],
         [
-            "grouplog ᴏɴ/ᴏғғ",
-            "Tᴏ ᴇɴᴀʙʟᴇ ᴏʀ ᴅɪꜱᴀʙʟᴇ ɢʀᴏᴜᴘ ᴛᴀɢꜱ, ᴡʜɪᴄʜ ᴡɪʟʟ ɢᴏ ᴛᴏ ᴛʜᴇ ʟᴏɢ ɢʀᴏᴜᴘ.",
+            "gruplog on/off",
+            "To enable or disable group tags, which will go to the log group.",
         ],
     ],
-)
+) 
