@@ -93,26 +93,6 @@
 
 
 
-#### 𝑺𝒑𝒆𝒄𝒊𝒂𝒍 𝑻𝒉𝒂𝒏𝒌𝒔 𝑻𝒐 [𝑬𝒗𝒆𝒓𝒚𝒐𝒏𝒆](https://github.com/Team-Japanese/Japanese-X-Userbot/graphs/contributors) 𝑾𝒉𝒐 𝑯𝒂𝒔 𝑯𝒆𝒍𝒑𝒆𝒅 𝑴𝒂𝒌𝒆 𝑻𝒉𝒊𝒔 𝑼𝒔𝒆𝒓𝒃𝒐𝒕 𝑨𝒘𝒆𝒔𝒐𝒎𝒆!
--  [PyroMan-Userbot](https://github.com/mrismanaziz/PyroMan-Userbot) : PyroMan-Userbot
--  [Athphane Userbot](https://github.com/athphane/userbot) : Athphane Userbot
--  [TeamDerUntergang](https://github.com/TeamDerUntergang/Telegram-SedenUserBot) : SedenUserBot
--  [TheHamkerCat](https://github.com/TheHamkerCat/WilliamButcherBot) : WilliamButcherBot
--  [Dareen Userbot](https://github.com/mikeel-ye/Dareen-Userbot) : Dareen Userbot
--  [Ayra X Userbot](https://github.com/OTANCABUL/Ayra) : Ayra X Userbot
--  [Ayiin Userbot](https://github.com/AyiinXd/Ayiin-Userbot) : Ayiin Userbot
--  [King Userbot](https://github.com/apisuserbot/King-Userbot) : King Userbot
--  [TeamYukki](https://github.com/TeamYukki/YukkiMusicBot) : YukkiMusicBot
--  [ITZ-ZAID](https://github.com/ITZ-ZAID/ZAID-USERBOT) : Zaid-UserBot
--  [OnlyMeriz](https://github.com/Onlymeriz) : OnlyMeriz
--  [Toni](https://github.com/Toni880) : Prime-UserBot
--  [Guru-Bot](https://github.com/Guru322/GURU-BOT) : Guru Bot
--  [Geez Ram](https://github.com/hitokizzy/Geez-Pyro) : Geez Ram
--  [Tofikdn](https://github.com/tofikdn) : Tede
--  [Ultroid](https://github.com/TeamUltroid/Ultroid) : Ultroid 
--  [Ultra X](https://github.com/ULTRA-OP/ULTRA-X) : Ultra-X
--  [Kazu](https://github.com/ionmusic) : Kazu 
-
 ### 𝑪𝒓𝒆𝒅𝒊𝒕
 
 <h3 align="center">
