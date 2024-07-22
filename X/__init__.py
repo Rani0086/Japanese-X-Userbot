@@ -56,7 +56,6 @@ from config import (
 )
 DATABASE_URL = DB_URL
 CMD_HELP = {}
-SUDO_USER = SUDO_USERS
 clients = []
 ids = []
 LOG_FILE_NAME = "logs.txt"
@@ -107,10 +106,7 @@ if not BOT_TOKEN:
    LOGGER(__name__).warning("WARNING: BOT TOKEN NOT FOUND, SHUTDOWN BOT")
    sys.exit
 
-if BOTLOG_CHATID:
-   BOTLOG_CHATID = BOTLOG_CHATID
-else:
-   BOTLOG_CHATID = "me"
+
 
 LOOP = asyncio.get_event_loop()
 
