@@ -12,10 +12,6 @@
       "description": "ʏᴏᴜʀ ᴏᴡɴᴇʀ ᴛᴇʟᴇɢʀᴀᴍ ᴀᴄᴄᴏᴜɴᴛ ɪᴅ",
       "required": true
     },
-    "SUDO_USERS": {
-      "description": "ʏᴏᴜʀ ꜱᴇᴄᴏɴᴅ ᴛᴇʟᴇɢʀᴀᴍ ᴀᴄᴄᴏᴜɴᴛ ɪᴅ ʜᴇʀᴇ ʏᴏᴜʀ ᴏᴡɴᴇʀ ɪᴅ ʜᴇʀᴇ ɪꜰ ʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴀɴʏ ꜱᴇᴄᴏɴᴅ ᴀᴄᴄᴏᴜɴᴛ",
-      "required": false      
-    },
     "OWNER": {
       "description": "ʏᴏᴜʀ ɴᴀᴍᴇ ᴏɴ ᴛᴇʟᴇɢʀᴀᴍ",
       "required": true
@@ -24,25 +20,12 @@
       "description": "ʏᴏᴜʀ ᴘʏʀᴏɢʀᴀᴍ ꜱᴛʀɪɴɢ ꜱᴇꜱꜱɪᴏɴ",
       "required": true
     },
-    "PM_PIC": {
-      "description": "ᴀ ᴛᴇʟᴇɢʀᴀᴘʜ ʟɪɴᴋ ᴏꜰ ᴀɴ ɪᴍᴀɢᴇ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ꜱᴇᴇ ɪɴ ᴘᴍᴘᴇʀᴍɪᴛ/ᴅᴍ",
-      "required": false
-    },
-    "BOTLOG_CHAT_ID": {
-      "description": "ᴅᴏɴ'ᴛ ᴄʜᴀɴɢᴇ ᴛʜɪꜱ",
-      "required": false,
-      "value": "-100"
-    },
     "HEROKU_API_KEY": {
       "description": "ꜰɪʟʟ ʏᴏᴜʀ ʜᴇʀᴏᴋᴜ ᴀᴘɪ ᴋᴇʏ ɢᴇᴛ ᴛʜɪꜱ ꜰʀᴏᴍ » https://dashboard.heroku.com/account",
       "required": true
     },
     "HEROKU_APP_NAME": {
       "description": "ꜰɪʟʟ ʏᴏᴜʀ ʜᴇʀᴏᴋᴜ ᴀᴘᴘ ɴᴀᴍᴇ",
-      "required": true
-    },
-    "MONGO_URL": {
-      "description": "ᴍᴏɴɢᴏ ᴅʙ ᴜʀʟ",
       "required": true
     }
   },
