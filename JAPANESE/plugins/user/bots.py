@@ -54,4 +54,3 @@ async def get_list_bots(client: Client, message: Message):
         await client.send_message(message.chat.id, sakura, reply_to_message_id=replyid)
     else:
         await message.edit(sakura)
-            
