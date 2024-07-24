@@ -12,24 +12,28 @@ from .help import *
 
 async def report_admin(client: Client, message: Message):
     await message.delete()
+
+    # Extract the report text if provided
     if len(message.text.split()) >= 2:
         text = message.text.split(None, 1)[1]
     else:
         text = None
+
+    # Get chat info
     grup = await client.get_chat(message.chat.id)
+
+    # Collect all non-bot administrators
     admin = []
-    async for a in client.get_chat_members(
+    async for a in client.iter_chat_members(
         message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS
     ):
-        if (
-            a.status == enums.ChatMemberStatus.ADMINISTRATOR
-            or a.status == enums.ChatMemberStatus.OWNER
-        ):
-            if not a.user.is_bot:
-                admin.append(mention_html(a.user.id, "\u200b"))
+        if not a.user.is_bot:
+            admin.append(mention_html(a.user.id, "\u200b"))
+
+    # Determine the message content based on conditions
     if message.reply_to_message:
         if text:
-            sakura = "{}".format(sakura)
+            sakura = html.escape(text)
         else:
             sakura = "{} reported to admins.".format(
                 mention_html(
@@ -39,10 +43,14 @@ async def report_admin(client: Client, message: Message):
             )
     else:
         if text:
-            sakura = "{}".format(html.escape(text))
+            sakura = html.escape(text)
         else:
-            sakura = "𝐂𝐚𝐥𝐥𝐢𝐧𝐠 𝐚𝐝𝐦𝐢𝐧𝐬 𝐢𝐧 {}.".format(grup.title)
+            sakura = f"Calling admins in {grup.title}."
+
+    # Add admin mentions to the message content
     sakura += "".join(admin)
+
+    # Send the message
     if message.reply_to_message:
         await client.send_message(
             message.chat.id,
@@ -53,4 +61,5 @@ async def report_admin(client: Client, message: Message):
     else:
         await client.send_message(
             message.chat.id, sakura, parse_mode=enums.ParseMode.HTML
-  )
+                                          )
+        
