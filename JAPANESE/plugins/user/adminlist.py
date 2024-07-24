@@ -10,62 +10,82 @@ from .help import *
 
 @Client.on_message(filters.command(["admins"], cmd) & filters.me)
 async def adminlist(client: Client, message: Message):
-    replyid = None
-    toolong = False
+    # Determine the chat to query
     if len(message.text.split()) >= 2:
         chat = message.text.split(None, 1)[1]
-        grup = await client.get_chat(chat)
     else:
         chat = message.chat.id
-        grup = await client.get_chat(chat)
-    if message.reply_to_message:
-        replyid = message.reply_to_message.id
+    
+    # Fetch chat information
+    grup = await client.get_chat(chat)
+    
+    # Determine reply ID if message is a reply
+    replyid = message.reply_to_message.id if message.reply_to_message else None
+    
+    # Initialize lists to store admins
     creator = []
     admin = []
     badmin = []
-    async for a in client.get_chat_members(
+    
+    # Iterate through chat members
+    async for member in client.iter_chat_members(
         message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS
     ):
-        try:
-            name = a.user.first_name + " " + a.user.last_name
-        except:
-            name = a.user.first_name
-        if name is None:
+        name = member.user.first_name + (" " + member.user.last_name if member.user.last_name else "")
+        if not name.strip():  # Handle missing names
             name = "☠️ 𝐃𝐞𝐥𝐞𝐭𝐞𝐝 𝐚𝐜𝐜𝐨𝐮𝐧𝐭"
-        if a.status == enums.ChatMemberStatus.ADMINISTRATOR:
-            if a.user.is_bot:
-                badmin.append(mention_markdown(a.user.id, name))
+        
+        # Categorize members based on status
+        if member.status == enums.ChatMemberStatus.ADMINISTRATOR:
+            if member.user.is_bot:
+                badmin.append(mention_markdown(member.user.id, name))
             else:
-                admin.append(mention_markdown(a.user.id, name))
-        elif a.status == enums.ChatMemberStatus.OWNER:
-            creator.append(mention_markdown(a.user.id, name))
+                admin.append(mention_markdown(member.user.id, name))
+        elif member.status == enums.ChatMemberStatus.OWNER:
+            creator.append(mention_markdown(member.user.id, name))
+    
+    # Sort admin lists alphabetically
+    creator.sort()
     admin.sort()
     badmin.sort()
-    totaladmins = len(creator) + len(admin) + len(badmin)
+    
+    # Prepare the message content
     sakura = "**Admins in {}**\n".format(grup.title)
     sakura += "╒═══「 𝐂𝐫𝐞𝐚𝐭𝐨𝐫 」\n"
+    
+    # Function to send message if it exceeds length
+    async def send_if_toolong():
+        nonlocal sakura
+        if len(sakura) >= 4096:
+            if toolong:
+                await message.reply(message.chat.id, sakura, reply_to_message_id=replyid)
+            else:
+                await message.edit(sakura)
+            sakura = ""
+    
+    # Append creators to message
     for x in creator:
         sakura += "│ • {}\n".format(x)
-        if len(sakura) >= 4096:
-            await message.reply(message.chat.id, sakura, reply_to_message_id=replyid)
-            sakura = ""
-            toolong = True
+        await send_if_toolong()
+    
+    # Append regular admins to message
     sakura += "╞══「 {} 𝐇𝐮𝐦𝐚𝐧 𝐀𝐝𝐦𝐢𝐧𝐢𝐬𝐭𝐫𝐚𝐭𝐨𝐫 」\n".format(len(admin))
     for x in admin:
         sakura += "│ • {}\n".format(x)
-        if len(sakura) >= 4096:
-            await message.reply(message.chat.id, sakura, reply_to_message_id=replyid)
-            sakura = ""
-            toolong = True
+        await send_if_toolong()
+    
+    # Append bot admins to message
     sakura += "╞══「 {} 𝐁𝐨𝐭 𝐀𝐝𝐦𝐢𝐧𝐢𝐬𝐭𝐫𝐚𝐭𝐨𝐫 」\n".format(len(badmin))
     for x in badmin:
         sakura += "│ • {}\n".format(x)
-        if len(sakura) >= 4096:
-            await message.reply(message.chat.id, sakura, reply_to_message_id=replyid)
-            sakura = ""
-            toolong = True
-    sakura += "╘══「 𝐓𝐨𝐭𝐚𝐥 {} 𝐀𝐝𝐦𝐢𝐧𝐬 」".format(totaladmins)
+        await send_if_toolong()
+    
+    # Append total admin count
+    sakura += "╘══「 𝐓𝐨𝐭𝐚𝐥 {} 𝐀𝐝𝐦𝐢𝐧𝐬 」".format(len(creator) + len(admin) + len(badmin))
+    
+    # Send or edit message based on length
     if toolong:
         await message.reply(message.chat.id, sakura, reply_to_message_id=replyid)
     else:
         await message.edit(sakura)
+        
