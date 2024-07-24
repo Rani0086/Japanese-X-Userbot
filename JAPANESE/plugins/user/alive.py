@@ -12,7 +12,7 @@ from config import BOT_VER, CHANNEL
 from config import CMD_HANDLER
 from config import GROUP, OWNER_ID
 from JAPANESE import CMD_HELP, StartTime
-from JAPANESE.nxtgenelper.basic import edit_or_reply
+from JAPANESE.nxtgenhelper.basic import edit_or_reply
 from JAPANESE.nxtgenhelper.PyroHelpers import ReplyCheck
 from JAPANESE.utils import get_readable_time
 from JAPANESE.utils.misc import restart
