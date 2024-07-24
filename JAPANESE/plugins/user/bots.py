@@ -11,32 +11,47 @@ from .help import *
 @Client.on_message(filters.command(["bots"], cmd) & filters.me)
 
 async def get_list_bots(client: Client, message: Message):
-    replyid = None
+    # Determine the chat to fetch bots from
     if len(message.text.split()) >= 2:
         chat = message.text.split(None, 1)[1]
-        grup = await client.get_chat(chat)
     else:
         chat = message.chat.id
+    
+    try:
         grup = await client.get_chat(chat)
-    if message.reply_to_message:
-        replyid = message.reply_to_message.id
-    getbots = client.get_chat_members(chat)
-    bots = []
-    async for a in getbots:
-        try:
-            name = a.user.first_name + " " + a.user.last_name
-        except:
-            name = a.user.first_name
-        if name is None:
-            name = "☠️ 𝐃𝐞𝐥𝐞𝐭𝐞𝐝 𝐚𝐜𝐜𝐨𝐮𝐧𝐭"
-        if a.user.is_bot:
-            bots.append(mention_markdown(a.user.id, name))
-    sakura = "**𝐀𝐥𝐥 𝐛𝐨𝐭𝐬 𝐢𝐧 𝐠𝐫𝐨𝐮𝐩 {}**\n".format(grup.title)
-    sakura += "╒═══「 𝐁𝐨𝐭𝐬 」\n"
-    for x in bots:
-        sakura += "│ • {}\n".format(x)
-    sakura += "╘══「 𝐓𝐨𝐭𝐚𝐥 {} 𝐁𝐨𝐭𝐬 」".format(len(bots))
+    except Exception as e:
+        await message.edit(f"Failed to fetch chat information: {str(e)}")
+        return
+    
+    # Determine if there's a reply message
+    replyid = message.reply_to_message.id if message.reply_to_message else None
+    
+    # Fetch all members and filter bots
+    try:
+        bots = []
+        async for member in client.iter_chat_members(chat):
+            user = member.user
+            name = f"{user.first_name} {user.last_name}" if user.last_name else user.first_name
+            if not name.strip():
+                name = "☠️ Deleted account"
+            if user.is_bot:
+                bots.append(mention_markdown(user.id, name))
+    except Exception as e:
+        await message.edit(f"Failed to fetch chat members: {str(e)}")
+        return
+    
+    # Prepare the response text
+    sakura = f"**All bots in group {grup.title}**\n"
+    sakura += "╒═══「 Bots 」\n"
+    
+    for bot in bots:
+        sakura += f"│ • {bot}\n"
+    
+    sakura += f"╘══「 Total {len(bots)} Bots 」"
+    
+    # Send or edit the message based on whether there's a reply
     if replyid:
         await client.send_message(message.chat.id, sakura, reply_to_message_id=replyid)
     else:
         await message.edit(sakura)
+            
