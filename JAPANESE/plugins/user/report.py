@@ -24,7 +24,7 @@ async def report_admin(client: Client, message: Message):
 
     # Collect all non-bot administrators
     admin = []
-    async for a in client.iter_chat_members(
+    async for a in client.fiter_chat_members(
         message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS
     ):
         if not a.user.is_bot:
