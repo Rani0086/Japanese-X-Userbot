@@ -11,11 +11,16 @@ from .help import *
 @Client.on_message(filters.command(["zombies"], cmd) & filters.me)
 
 async def kickdel_cmd(client: Client, message: Message):
-    nobi = await edit_or_reply(message, "<b>𝐊𝐢𝐜𝐤𝐢𝐧𝐠 𝐝𝐞𝐥𝐞𝐭𝐞𝐝 𝐚𝐜𝐜𝐨𝐮𝐧𝐭𝐬...</b>")
-    # noinspection PyTypeChecker
-    values = [
-        await message.chat.ban_member(user.user.id, int(time()) + 31)
+    # Send initial message indicating action
+    edit_message = await edit_or_reply(message, "<b>Kicking deleted accounts...</b>")
+    
+    # Fetch all members and kick deleted accounts
+    deleted_members = [
+        await message.chat.kick_member(member.user.id, int(time()) + 31)
         for member in await message.chat.get_members()
         if member.user.is_deleted
     ]
-    await nobi.edit(f"<b>𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 𝐤𝐢𝐜𝐤𝐞𝐝 {len(values)} 𝐝𝐞𝐥𝐞𝐭𝐞𝐝 𝐚𝐜𝐜𝐨𝐮𝐧𝐭(s)</b>")
+    
+    # Update message with result
+    await edit_message.edit(f"<b>Successfully kicked {len(deleted_members)} deleted account(s).</b>")
+    
