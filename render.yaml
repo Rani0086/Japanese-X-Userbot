@@ -14,10 +14,6 @@ services:
         sync: false
       - key: OWNER_ID 
         sync: false
-      - key: DB_URL
-        sync: false
-      - key: PM_PIC
-        sync: false
       - key: STRING_SESSION1
         sync: false
     autoDeploy: false
