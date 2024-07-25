@@ -24,9 +24,7 @@ from .help import *
 
 modules = CMD_HELP
 alivemodules = CMD_HELP
-alive_logo = (
-    getenv("ALIVE_LOGO") or ""
-)
+alive_logo = ALIVE_LOGO
 
 @Client.on_message(filters.command(["alive", "awake"], cmd) & filters.me)
 async def alip(client: Client, message: Message):
