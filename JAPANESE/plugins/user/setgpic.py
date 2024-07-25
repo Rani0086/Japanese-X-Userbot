@@ -21,16 +21,16 @@ unmute_permissions = ChatPermissions(
 
 @Client.on_message(filters.command(["setgcpic"], cmd) & filters.me)
 async def set_chat_photo(client: Client, message: Message):
-    X = (await client.get_chat_member(message.chat.id, client.me.id)).privileges
-    can_change_admin = X.can_change_info
+    chat_member = await client.get_chat_member(message.chat.id, client.me.id)
+    can_change_info = chat_member.can_change_info
     can_change_member = message.chat.permissions.can_change_info
-    if not (can_change_admin or can_change_member):
-        await message.edit_text("You don't have enough permission")
-    if message.reply_to_message:
-        if message.reply_to_message.photo:
-            await client.set_chat_photo(
-                message.chat.id, photo=message.reply_to_message.photo.file_id
-            )
-            return
+
+    if not (can_change_info or can_change_member):
+        await message.edit_text("You don't have enough permissions.")
+        return
+
+    if message.reply_to_message and message.reply_to_message.photo:
+        await client.set_chat_photo(message.chat.id, photo=message.reply_to_message.photo.file_id)
     else:
-        await message.edit_text("Reply to a photo to set it !")
+        await message.edit_text("Reply to a photo to set it!")
+
