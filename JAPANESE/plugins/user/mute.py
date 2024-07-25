@@ -20,7 +20,7 @@ unmute_permissions = ChatPermissions(
     can_pin_messages=False,
 )
 
-@Client.on_message(filters.command(["mute", "unmute"], cmd) & filters.me)
+@Client.on_message(filters.command(["mute"], cmd) & filters.me)
 
 async def mute(client: Client, message: Message):
     # Extract user_id and reason from the message
