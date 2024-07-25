@@ -12,7 +12,7 @@ from config import BOT_VER, CHANNEL
 from config import CMD_HANDLER
 from config import GROUP, OWNER_ID
 from config import ALIVE_LOGO
-from condig import ALIVE_TEXT
+from config import ALIVE_TEXT
 from JAPANESE import CMD_HELP, StartTime
 from JAPANESE.nxtgenhelper.basic import edit_or_reply
 from JAPANESE.nxtgenhelper.PyroHelpers import ReplyCheck
