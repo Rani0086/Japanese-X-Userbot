@@ -21,6 +21,9 @@ from .help import *
 
 modules = CMD_HELP
 alivemodules = CMD_HELP
+alive_logo = (
+    gvarstatus("ALIVE_LOGO") or ""
+)
 
 @Client.on_message(filters.command(["alive", "awake"], cmd) & filters.me)
 async def alip(client: Client, message: Message):
