@@ -22,22 +22,27 @@ unmute_permissions = ChatPermissions(
 
 @Client.on_message(filters.command(["pin", "unpin"], cmd) & filters.me)
 
-async def pin_message(client: Client, message):
+async def pin_message(client: Client, message: Message):
     if not message.reply_to_message:
         return await edit_or_reply(message, "Reply to a message to pin/unpin it.")
-    X = await edit_or_reply(message, "`Processing...`")
-    bot = (await client.get_chat_member(message.chat.id, client.me.id)).privileges
+    
+    edit_msg = await edit_or_reply(message, "`Processing...`")
+    
+    # Check bot's permissions to pin messages
+    bot = await client.get_chat_member(message.chat.id, client.me.id)
     if not bot.can_pin_messages:
-        return await X.edit("I don't have enough permissions")
-    r = message.reply_to_message
-    if message.command[0][0] == "u":
-        await r.unpin()
-        return await X.edit(
-            f"**Unpinned [this]({r.link}) message.**",
+        return await edit_msg.edit("Sorry, I don't have permission to pin messages.")
+    
+    replied_message = message.reply_to_message
+    if message.command and message.command[0][0] == "u":
+        await replied_message.unpin()
+        return await edit_msg.edit(
+            f"**Unpinned [this]({replied_message.link}) message.**",
             disable_web_page_preview=True,
         )
-    await r.pin(disable_notification=True)
-    await X.edit(
-        f"**Pinned [this]({r.link}) message.**",
+    
+    await replied_message.pin(disable_notification=True)
+    await edit_msg.edit(
+        f"**Pinned [this]({replied_message.link}) message.**",
         disable_web_page_preview=True,
     )
