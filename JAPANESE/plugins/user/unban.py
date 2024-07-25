@@ -24,21 +24,34 @@ unmute_permissions = ChatPermissions(
 
 async def member_unban(client: Client, message: Message):
     reply = message.reply_to_message
-    X = await edit_or_reply(message, "`In progresss master...`")
-    bot = (await client.get_chat_member(message.chat.id, client.me.id)).privileges
+    edit_msg = await edit_or_reply(message, "`Processing...`")
+    
+    # Check bot's permissions to restrict members
+    bot = await client.get_chat_member(message.chat.id, client.me.id)
     if not bot.can_restrict_members:
-        return await X.edit("Ask Admin First dude!")
-    if reply and reply.sender_chat and reply.sender_chat != message.chat.id:
-        return await X.edit("It's a channel, where can you ban it, okay?!")
-
+        return await edit_msg.edit("Sorry, I don't have permission to unban members.")
+    
+    # Check if replying to a message and that message is from a channel
+    if reply and reply.sender_chat and reply.sender_chat.type == 'channel':
+        return await edit_msg.edit("Cannot unban members from a channel.")
+    
+    # Determine user ID to unban
     if len(message.command) == 2:
         user = message.text.split(None, 1)[1]
     elif len(message.command) == 1 and reply:
-        user = message.reply_to_message.from_user.id
+        user = reply.from_user.id
     else:
-        return await X.edit(
-            "Username where is the fool?!."
-        )
-    await message.chat.unban_member(user)
-    umention = (await client.get_users(user)).mention
-    await X.edit(f"Unbanned! {umention}")
+        return await edit_msg.edit("Provide a valid username or reply to a message to unban.")
+
+    try:
+        # Unban the member
+        await message.chat.unban_member(user)
+        
+        # Get user mention for the unban message
+        user_obj = await client.get_users(user)
+        mention = user_obj.mention
+        
+        # Edit message to confirm unban
+        await edit_msg.edit(f"Successfully unbanned {mention}")
+    except Exception as e:
+        await edit_msg.edit(f"Failed to unban user: {str(e)}")
