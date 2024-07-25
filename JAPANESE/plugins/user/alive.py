@@ -11,6 +11,9 @@ from pyrogram.types import Message
 from config import BOT_VER, CHANNEL
 from config import CMD_HANDLER
 from config import GROUP, OWNER_ID
+from config import ALIVE_EMOJI
+from config import ALIVE_LOGO
+from config import ALIVE_TEKS_CUSTOM
 from JAPANESE import CMD_HELP, StartTime
 from JAPANESE.nxtgenhelper.basic import edit_or_reply
 from JAPANESE.nxtgenhelper.PyroHelpers import ReplyCheck
@@ -22,7 +25,7 @@ from .help import *
 modules = CMD_HELP
 alivemodules = CMD_HELP
 alive_logo = (
-    gvarstatus("ALIVE_LOGO") or ""
+    getenv("ALIVE_LOGO") or ""
 )
 
 @Client.on_message(filters.command(["alive", "awake"], cmd) & filters.me)
