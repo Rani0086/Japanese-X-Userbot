@@ -17,7 +17,6 @@ from pytgcalls import GroupCallFactory
 from config import (
     API_HASH,
     API_ID,
-    DB_URL,
     STRING_SESSION1,
     STRING_SESSION2,
     STRING_SESSION3,
@@ -30,7 +29,6 @@ from config import (
     STRING_SESSION10,
     BOT_TOKEN
 )
-DATABASE_URL = DB_URL
 CMD_HELP = {}
 clients = []
 ids = []
