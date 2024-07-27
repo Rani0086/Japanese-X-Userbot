@@ -22,23 +22,33 @@ async def make_carbon(code):
 
 @Client.on_message(filters.command(["carbon"], cmd) & filters.me)
 async def carbon_func(client: Client, message: Message):
-    text = (
-        message.text.split(None, 1)[1]
-        if len(
-            message.command,
-        )
-        != 1
-        else None
-    )
-    if message.reply_to_message:
+    # Determine the text to be processed
+    if len(message.command) == 1:
+        text = None
+    else:
+        text = message.text.split(None, 1)[1]
+
+    # If there's no text, try to use text from the replied message
+    if not text and message.reply_to_message:
         text = message.reply_to_message.text or message.reply_to_message.caption
+
+    # If no text is found, delete the message and exit
     if not text:
-        return await message.delete()
-    X = await edit_or_reply(message, "`Preparing Carbon . . .`")
+        await message.delete()
+        return
+
+    # Notify the user that the processing is starting
+    progress_msg = await edit_or_reply(message, "`Preparing Carbon . . .`")
+    
+    # Create the Carbon image
     carbon = await make_carbon(text)
-    await X.edit("`Uploading . . .`")
+    
+    # Update the message to indicate uploading is in progress
+    await progress_msg.edit("`Uploading . . .`")
+    
+    # Upload the Carbon image and clean up
     await asyncio.gather(
-        X.delete(),
+        progress_msg.delete(),
         client.send_photo(
             message.chat.id,
             carbon,
@@ -46,7 +56,10 @@ async def carbon_func(client: Client, message: Message):
             reply_to_message_id=ReplyCheck(message),
         ),
     )
+    
+    # Close the Carbon file
     carbon.close()
+    
 
 
 add_command_help(
