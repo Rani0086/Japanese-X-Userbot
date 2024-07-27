@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
+from config import CMD_HANDLER
 from JAPANESE.nxtgenhelper.basic import edit_or_reply
 from .help import *
 
