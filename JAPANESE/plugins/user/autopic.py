@@ -7,6 +7,7 @@ from shutil import copyfile
 from PIL import Image, ImageDraw, ImageFont
 from pyrogram import filters, Client
 from config import OWNER_ID
+from config import CMD_HANDLER
 from JAPANESE.nxtgenhelper.basic import eor
 from .help import *
 
