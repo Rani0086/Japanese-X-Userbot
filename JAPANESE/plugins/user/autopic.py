@@ -22,7 +22,7 @@ async def _autopic(_, delay):
 
     while bool(__XOR):
         await asyncio.sleep(delay)
-        original = "JAPANESE/resources/autopic-template.jpg"
+        original = "JAPANESE/sakura/autopic-template.jpg"
         photo = "pic.png"
         copyfile(original, photo)
         current_time = datetime.now().strftime(
@@ -30,7 +30,7 @@ async def _autopic(_, delay):
         )
         img = Image.open(photo)
         drawn_text = ImageDraw.Draw(img)
-        fnt = ImageFont.truetype("JAPANESE/resources/autopic-font-ubuntu.ttf", 60)
+        fnt = ImageFont.truetype("JAPANESE/sakura/autopic-font-ubuntu.ttf", 60)
         drawn_text.text(choice(DIM), current_time, font=fnt, fill=(0, 0, 0))
         img.save(photo)
         try:
