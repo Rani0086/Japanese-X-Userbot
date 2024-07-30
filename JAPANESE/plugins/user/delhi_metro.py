@@ -1,4 +1,11 @@
 from pyrogram import Client, filters
+from pyrogram.types import Message
+
+from config import CMD_HANDLER
+from JAPANESE.nxtgenhelper.basic import edit_or_reply
+from JAPANESE.nxtgenhelper.PyroHelpers import ReplyCheck
+
+from .help import *
 
 # Delhi Metro Lines and Stations Information
 delhi_metro_info = """
@@ -84,6 +91,14 @@ delhi_metro_info = """
   - Sector 62
 """
 
-@Client.on_message(filters.command("delhi_metro_info"))
+@Client.on_message(filters.command(["metro"], cmd) & filters.me)
 def send_metro_info(client, message):
     message.reply_text(delhi_metro_info, parse_mode="markdown")
+
+
+add_command_help(
+    "•─╼⃝𖠁 Dᴇʟʜɪ Mᴇᴛʀᴏ",
+    [
+        ["metro <ʀᴇᴘʟʏ>", "Dᴇʟʜɪ Mᴇᴛʀᴏ ʟɪɴᴇs ᴀɴᴅ sᴛᴀᴛɪᴏɴs ɪɴғᴏʀᴍᴀᴛɪᴏɴ."],
+    ],
+) 
