@@ -43,3 +43,7 @@ youtube-search-python
 yt-dlp==2024.7.25
 httpx[http2]
 openai
+google-api-python-client 
+google-auth 
+google-auth-oauthlib 
+google-auth-httplib2
