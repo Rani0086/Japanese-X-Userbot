@@ -1,4 +1,3 @@
-from pyrogram import Client, filters
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 import io
