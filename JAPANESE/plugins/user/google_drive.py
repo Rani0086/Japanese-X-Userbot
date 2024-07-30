@@ -3,6 +3,14 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 import io
 import os
+from pyrogram import Client, filters
+from pyrogram.types import Message
+
+from config import CMD_HANDLER
+from JAPANESE.nxtgenhelper.basic import edit_or_reply
+from JAPANESE.nxtgenhelper.PyroHelpers import ReplyCheck
+
+from .help import *
 
 
 # Path to the credentials file
@@ -37,7 +45,7 @@ def download_from_drive(file_id, destination_path):
         print(f"Download {int(status.progress() * 100)}%.")
     fh.close()
 
-@Client.on_message(filters.command("upload") & filters.private)
+@Client.on_message(filters.command(["upload"], cmd) & filters.me)
 async def upload_command(client, message):
     if message.reply_to_message and message.reply_to_message.document:
         file = message.reply_to_message.document
@@ -47,9 +55,9 @@ async def upload_command(client, message):
         await message.reply(f"File uploaded successfully! [Drive File](https://drive.google.com/file/d/{file_id}/view)")
         os.remove(file_path)
     else:
-        await message.reply("Please reply to a file with the /upload command.")
+        await message.reply("Please reply to a file with the .upload.")
 
-@Client.on_message(filters.command("download") & filters.private)
+@Client.on_message(filters.command(["download"], cmd) & filters.me)
 async def download_command(client, message):
     if len(message.command) < 2:
         return await message.reply("Please provide the Google Drive file ID.")
@@ -60,3 +68,10 @@ async def download_command(client, message):
     await client.send_document(message.chat.id, destination_path)
     os.remove(destination_path)
 
+add_command_help(
+    "•─╼⃝𖠁 Gᴏᴏɢʟᴇ Dʀɪᴠᴇ",
+    [
+        ["upload <ʀᴇᴘʟʏ>", "Tᴏ ᴜᴘʟᴏᴀᴅ Gᴏᴏɢʟᴇ Dʀɪᴠᴇ ғɪʟᴇ."],
+        ["download <ʀᴇᴘʟʏ>", "Tᴏ Dᴏᴡɴʟᴏᴀᴅ Gᴏᴏɢʟᴇ Dʀɪᴠᴇ ғɪʟᴇ."],
+    ],
+) 
