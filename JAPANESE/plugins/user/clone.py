@@ -8,7 +8,7 @@ from JAPANESE.nxtgenhelper.basic import edit_or_reply, get_text, get_user
 from .help import *
 
 OWNER = os.environ.get("OWNER", None)
-BIO = os.environ.get("BIO", "𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄-𝐗-𝐔𝐒𝐄𝐑𝐁𝐎𝐓")
+BIO = os.environ.get("BIO", "𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄-𝐗-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 5.0")
 
 
 @Client.on_message(filters.command(["clone"], cmd) & filters.me)
