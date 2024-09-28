@@ -4,16 +4,16 @@ class First:
 **𝐇𝐞𝐲**, __𝐈 𝐚𝐦 𝐮𝐬𝐢𝐧𝐠__ ✨ **𝐉𝐚𝐩𝐚𝐧𝐞𝐬𝐞-𝐗-𝐔𝐬𝐞𝐫𝐛𝐨𝐭** ✨
 
 ✣ **𝐔𝐬𝐞𝐫𝐛𝐨𝐭 𝐕𝐞𝐫𝐬𝐢𝐨𝐧 :** `{}`
-✣ **𝐆𝐫𝐨𝐮𝐩 𝐒𝐮𝐩𝐩𝐨𝐫𝐭 :** [𝐉𝐚𝐩𝐚𝐧𝐞𝐬𝐞 𝐔𝐬𝐞𝐫𝐛𝐨𝐭](t.me/Japanese_Userbot_Support)
-✣ **𝐂𝐡𝐚𝐧𝐧𝐞𝐥 :** [𝐉𝐚𝐩𝐚𝐧𝐞𝐬𝐞 𝐔𝐬𝐞𝐫𝐛𝐨𝐭](t.me/Japanese_Userbot)
-✣ **𝐎𝐰𝐧𝐞𝐫  :** [𝐍𝐎𝐁𝐈𝐓𝐀_𝐗𝐃](t.me/Nobitaa_xd)
-✣ **𝐑𝐞𝐩𝐨 :** [𝐉𝐚𝐩𝐚𝐧𝐞𝐬𝐞-𝐗-𝐔𝐬𝐞𝐫𝐛𝐨𝐭](https://github.com/Team-Japanese/Japanese-X-Userbot)
+✣ **𝐆𝐫𝐨𝐮𝐩 𝐒𝐮𝐩𝐩𝐨𝐫𝐭 :** [GOKU 𝐔𝐬𝐞𝐫𝐛𝐨𝐭](https://t.me/lolpagalokigc)
+✣ **𝐂𝐡𝐚𝐧𝐧𝐞𝐥 :** [GOKU 𝐔𝐬𝐞𝐫𝐛𝐨𝐭](https://t.me/Hindi_new_Animes)
+✣ **𝐎𝐰𝐧𝐞𝐫  :** [ITZ KAKAROT ](t.me/Xeno_Kakarot)
+✣ **𝐑𝐞𝐩𝐨 :** [GOKU-𝐗-𝐔𝐬𝐞𝐫𝐛𝐨𝐭](https://t.me/mlohvdryj/51431)
 
 
-𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐛𝐲 [𝐉𝐚𝐩𝐚𝐧𝐞𝐬𝐞-𝐗-𝐔𝐬𝐞𝐫𝐛𝐨𝐭](https://github.com/Team-Japanese/Japanese-X-Userbot)"""
-    CREATOR = '𝐈 𝐰𝐚𝐬 𝐜𝐫𝐞𝐚𝐭𝐞𝐝 𝐛𝐲 𝐦𝐲 𝐦𝐚𝐬𝐭𝐞𝐫 <a href="https://github.com/Team-Japanese/Japanese-X-Userbot">𝐉𝐚𝐩𝐚𝐧𝐞𝐬𝐞-𝐗-𝐔𝐬𝐞𝐫𝐛𝐨𝐭</a> 𝐨𝐧 𝐚 𝐫𝐚𝐢𝐧𝐲 𝐝𝐚𝐲.'
+𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐛𝐲 [GOKU-𝐗-𝐔𝐬𝐞𝐫𝐛𝐨𝐭](https://t.me/lolpagalokigc)"""
+    CREATOR = '𝐈 𝐰𝐚𝐬 𝐜𝐫𝐞𝐚𝐭𝐞𝐝 𝐛𝐲 𝐦𝐲 𝐦𝐚𝐬𝐭𝐞𝐫 <a href="https://github.com/Gokukhan1/Japanese-X-Userbot">GOKU-𝐗-𝐔𝐬𝐞𝐫𝐛𝐨𝐭</a> 𝐨𝐧 𝐚 𝐫𝐚𝐢𝐧𝐲 𝐝𝐚𝐲.'
     MSG_ON = """
-🌸 **𝐉𝐚𝐩𝐚𝐧𝐞𝐬𝐞-𝐗-𝐔𝐬𝐞𝐫𝐛𝐨𝐭 𝐀𝐜𝐭𝐢𝐯𝐚𝐭𝐞𝐝 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲** 🌸
+🌸 **GOKU-𝐗-𝐔𝐬𝐞𝐫𝐛𝐨𝐭 𝐀𝐜𝐭𝐢𝐯𝐚𝐭𝐞𝐝 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲** 🌸
 ━━
 ➠ **𝐔𝐬𝐞𝐫𝐛𝐨𝐭 𝐕𝐞𝐫𝐬𝐢𝐨𝐧 -** `{}`
 ➠ **𝐓𝐲𝐩𝐞** `{}𝐩𝐢𝐧𝐠` **𝐭𝐨 𝐜𝐡𝐞𝐜𝐤 𝐁𝐨𝐭**
