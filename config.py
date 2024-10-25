@@ -6,19 +6,19 @@ from dotenv import load_dotenv
 
 load_dotenv("config.env")
 
-ALIVE_TEXT = getenv("ALIVE_TEXT", "✧✧ 𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄-𝐗-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 𝐈𝐒 𝐀𝐋𝐈𝐕𝐄 ✧✧")
-ALIVE_LOGO = getenv("ALIVE_LOGO", "https://graph.org/file/ec99cb6dba229bd984537.jpg")
-API_HASH = getenv("API_HASH", "34efb38c74d5e6b25d1bb6234396a8af")
-API_ID = getenv("API_ID", "23129036")
+ALIVE_TEXT = getenv("ALIVE_TEXT", "✧✧ niyoto userbot  ✧✧")
+ALIVE_LOGO = getenv("ALIVE_LOGO", "https://envs.sh/AIr.jpg")
+API_HASH = getenv("API_HASH", "009e3d8c1bdc89d5387cdd8fd182ec15")
+API_ID = getenv("API_ID", "23255238")
 BOT_VER = "5.0.0@main"
 BRANCH = getenv("BRANCH", "main") #don't change this line 
 CMD_HNDLR = cmd
 BOT_TOKEN = getenv("BOT_TOKEN", "none")
 OPENAI_API_KEY = getenv("OPENAI_API_KEY", "")
-CHANNEL = getenv("CHANNEL", "Japanese_Userbot")
+CHANNEL = getenv("CHANNEL", "niyoto_supoort")
 CMD_HANDLER = getenv("CMD_HANDLER", ".")
 GIT_TOKEN = getenv("GIT_TOKEN", "")
-GROUP = getenv("GROUP", "Japanese_Userbot_Support")
+GROUP = getenv("GROUP", "waifexanime")
 HEROKU_API_KEY = getenv("HEROKU_API_KEY")
 HEROKU_APP_NAME = getenv("HEROKU_APP_NAME")
 PMPERMIT_PIC = getenv("PMPERMIT_PIC", None)
