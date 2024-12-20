@@ -85,7 +85,6 @@ LOOP = asyncio.get_event_loop()
 
 trl = Translator()
 
-aiosession = ClientSession()
 
 CMD_HELP = {}
 
